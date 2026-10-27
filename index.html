@@ -42,11 +42,6 @@
         .c-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:30px 0;}
         .c-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:15px;text-align:center;}
         .c-link{display:inline-block;background:rgba(212,175,55,0.1);border:1px solid var(--gold);color:var(--gold-l);padding:5px 10px;border-radius:15px;font-size:0.72rem;text-decoration:none;}
-        .login-box{background:rgba(212,175,55,0.05);border:1px solid var(--border);border-radius:10px;padding:15px;margin-bottom:20px;display:flex;gap:10px;}
-        .login-box input{flex-grow:1;padding:8px 12px;background:#1a1714;border:1px solid var(--border);color:var(--text);border-radius:6px;font-size:0.85rem;}
-        .up-panel{background:rgba(212,175,55,0.05);border:1px dashed var(--gold);border-radius:10px;padding:20px;margin-bottom:25px;display:none;}
-        .up-panel.show{display:block;}
-        .up-panel input{width:100%;padding:10px;margin-bottom:10px;border-radius:5px;border:1px solid var(--border);background:#1a1714;color:var(--text);}
         .drawer{position:fixed;top:0;right:-100%;width:100%;max-width:360px;height:100%;background:var(--card);border-left:1px solid var(--border);z-index:9999;padding:20px;transition:right 0.3s ease;display:flex;flex-direction:column;box-shadow:-5px 0 15px rgba(0,0,0,0.5);}
         .drawer.open{right:0;}
         .d-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:15px;margin-bottom:15px;}
@@ -161,7 +156,7 @@
             <div class="c-card"><h5 style="color:var(--gold-l);font-size:0.82rem;margin-bottom:8px;">電子郵箱</h5><a href="mailto:Aaa0987955906aaa@gmail.com" class="c-link">發送電子郵件</a></div>
         </div>
 
-        <!-- 原創藝術畫作專區 -->
+        <!-- 原創藝術畫作珍藏專區 -->
         <section id="art">
             <h3 class="sec-title" style="margin:35px 0 20px 0;">原創藝術畫作珍藏專區 (NT$ 680)</h3>
             
@@ -169,21 +164,6 @@
                 <h4>🎨 品心美學 · 老師精心精選原創藝術流傳與結緣</h4>
                 <p><strong>✨ 為什麼選擇老師精心精選的藝術美學？</strong> 每一幅畫作均為彭品心老師傾注心力、經過嚴格精挑細選的藝術結晶。本專區以親民實惠的結緣價格（均一價 NT$ 680）讓美學與靈性祝福毫無負擔地走入尋常百姓家，為居家或辦公空間營造高雅藝術氛圍，達到陶冶心靈、提升環境磁場的多重效益。</p>
                 <p><strong>🎯 服務方向與彈性說明：</strong> 為了讓藏家免去繁複昂貴的裝裱開銷，並能完全依據個人空間風格、預算與審美喜好自由發揮，本專區採純原創作品售出（不含裝裱）。藏家可自行挑選喜愛的方式進行裝裱，讓藝術完美融合您的生活空間。</p>
-            </div>
-
-            <!-- 內嵌式密碼解鎖登入列（絕對不會被手機擋住） -->
-            <div class="login-box" id="loginBox">
-                <input type="password" id="adminPwdInput" placeholder="請輸入管理員密碼以解鎖上傳...">
-                <button class="btn" onclick="checkAdminPwd()">解鎖上傳</button>
-            </div>
-
-            <!-- 管理員專用上傳面板 (預設隱藏) -->
-            <div class="up-panel" id="adminPanel">
-                <h4 style="color:var(--gold-l);margin-bottom:10px;">🎨 上傳新畫作至畫廊 (管理者專用)</h4>
-                <input type="text" id="aName" placeholder="請輸入畫作名稱 (例: 雲山禪韻)">
-                <input type="text" id="aWm" value="品心美學 · 彭品心原創" placeholder="浮水印文字">
-                <input type="file" id="aFile" accept="image/*">
-                <button class="btn" style="width:100%;" onclick="uploadArt()">確認上傳並新增畫作 (NT$ 680)</button>
             </div>
             
             <div class="grid-2" id="artGallery"></div>
@@ -221,7 +201,9 @@
     <script>
         let cart = JSON.parse(localStorage.getItem('zimo_cart')) || [];
         let isVip = localStorage.getItem('zimo_is_vip') === 'true';
-        let artworksList = JSON.parse(localStorage.getItem('zimo_artworks')) || [];
+        let artworksList = JSON.parse(localStorage.getItem('zimo_artworks')) || [
+            {name: '典藏精選畫作 01', price: 680, img: '1792354723564.png', wm: '品心美學 · 彭品心原創', size: '典藏預覽'}
+        ];
         
         function toggleMenu() {
             let m = document.getElementById('menuDrawer');
@@ -240,18 +222,6 @@
             if(c) c.classList.add('open');
         }
         
-        // 內嵌式密碼驗證解鎖上傳面板
-        function checkAdminPwd() {
-            let inputVal = document.getElementById('adminPwdInput').value.trim();
-            if(inputVal === 'AF0824af0824$') {
-                document.getElementById('adminPanel').classList.add('show');
-                document.getElementById('loginBox').style.display = 'none'; // 驗證成功後隱藏密碼輸入框
-                alert('🔓 管理員驗證成功！');
-            } else {
-                alert('❌ 密碼錯誤！');
-            }
-        }
-
         function updateCart() {
             let badge = document.getElementById('cCount');
             if(badge) badge.innerText = cart.length;
@@ -287,11 +257,6 @@
             updateCart();
         }
 
-        function saveArtAndSync() {
-            localStorage.setItem('zimo_artworks', JSON.stringify(artworksList));
-            renderArt();
-        }
-
         function rm(idx) {
             cart.splice(idx, 1);
             saveCartAndSync();
@@ -309,37 +274,70 @@
                 alert('優惠碼錯誤');
             }
         }
-        
-        function uploadArt() {
-            let nameInput = document.getElementById('aName');
-            let wmInput = document.getElementById('aWm');
-            let fileInput = document.getElementById('aFile');
+
+        function renderArt() {
+            let g = document.getElementById('artGallery');
+            if(!g) return;
+            if(artworksList.length === 0) {
+                g.innerHTML = '<p style="color:var(--muted);grid-column:span 2;text-align:center;padding:20px;">目前尚無藏品展示</p>';
+                return;
+            }
+            let html = '';
+            artworksList.forEach((a) => {
+                html += `
+                    <div class="s-card">
+                        <div>
+                            <div style="position:relative;">
+                                <img src="${a.img}" style="width:100%;height:140px;object-fit:cover;border-radius:6px;border:1px solid var(--border);">
+                                <div style="position:absolute;bottom:8px;right:8px;font-size:0.65rem;background:rgba(0,0,0,0.7);color:#fff;padding:2px 5px;border-radius:3px;">${a.wm}</div>
+                            </div>
+                            <h4 style="color:var(--gold-l);margin-top:8px;">${a.name}</h4>
+                            <div class="art-size-info">📏 規格：${a.size} <br>（不含裝裱，藏家可自理）</div>
+                            <div class="price">NT$ ${a.price}</div>
+                        </div>
+                        <div style="margin-top:8px;">
+                            <button class="btn btn-o" style="width:100%;font-size:0.75rem;padding:6px;" onclick="add('${a.name}', ${a.price})">加入購物車</button>
+                        </div>
+                    </div>
+                `;
+            });
+            g.innerHTML = html;
+        }
+
+        function checkout() {
+            if(cart.length === 0) {
+                alert('購物車是空的，請先加入商品！');
+                return;
+            }
+            let nameInput = document.getElementById('cName');
+            let phoneInput = document.getElementById('cPhone');
+            let emailInput = document.getElementById('cEmail');
+            let remarkInput = document.getElementById('cRemark');
             
             let name = nameInput ? nameInput.value.trim() : '';
-            let wm = wmInput ? wmInput.value.trim() : '品心美學 · 彭品心原創';
+            let phone = phoneInput ? phoneInput.value.trim() : '';
+            let email = emailInput ? emailInput.value.trim() : '';
             
-            if(!name || !fileInput || !fileInput.files || fileInput.files.length === 0) {
-                alert('請輸入畫作名稱並選擇圖片檔案！');
+            if(!name || !phone || !email) {
+                alert('請完整填寫姓名、聯絡電話與電子信箱！');
                 return;
             }
             
-            let file = fileInput.files[0];
-            let reader = new FileReader();
+            alert('訂單資料已送出！即將為您開啟 LINE 聯絡老師。');
             
-            reader.onload = function(e) {
-                let base64Image = e.target.result;
-                artworksList.push({name: name, price: 680, img: base64Image, wm: wm, size: '典藏預覽'});
-                saveArtAndSync();
-                if(nameInput) nameInput.value = '';
-                if(fileInput) fileInput.value = '';
-                alert('✅ 畫作已成功上傳並新增至畫廊！');
-            };
-            reader.readAsDataURL(file);
+            cart = [];
+            saveCartAndSync();
+            if(nameInput) nameInput.value = '';
+            if(phoneInput) phoneInput.value = '';
+            if(emailInput) emailInput.value = '';
+            if(remarkInput) remarkInput.value = '';
+            toggleCart();
+            
+            window.open('https://line.me/', '_blank');
         }
 
-        function delArt(idx) {
-            if(confirm('確定刪除此畫作？')) {
-                artworksList.splice(idx, 1);
-                saveArtAndSync();
-            }
-       
+        updateCart();
+        renderArt();
+    </script>
+</body>
+</html>
