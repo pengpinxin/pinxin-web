@@ -42,7 +42,8 @@
         .c-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:30px 0;}
         .c-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:15px;text-align:center;}
         .c-link{display:inline-block;background:rgba(212,175,55,0.1);border:1px solid var(--gold);color:var(--gold-l);padding:5px 10px;border-radius:15px;font-size:0.72rem;text-decoration:none;}
-        .up-panel{background:rgba(212,175,55,0.05);border:1px dashed var(--gold);border-radius:10px;padding:20px;margin-bottom:25px;}
+        .up-panel{background:rgba(212,175,55,0.05);border:1px dashed var(--gold);border-radius:10px;padding:20px;margin-bottom:25px;display:none;}
+        .up-panel.show{display:block;}
         .up-panel input{width:100%;padding:10px;margin-bottom:10px;border-radius:5px;border:1px solid var(--border);background:#1a1714;color:var(--text);}
         .drawer{position:fixed;top:0;right:-100%;width:100%;max-width:360px;height:100%;background:var(--card);border-left:1px solid var(--border);z-index:9999;padding:20px;transition:right 0.3s ease;display:flex;flex-direction:column;box-shadow:-5px 0 15px rgba(0,0,0,0.5);}
         .drawer.open{right:0;}
@@ -160,21 +161,26 @@
 
         <!-- 原創藝術畫作專區 -->
         <section id="art">
-            <h3 class="sec-title">原創藝術畫作珍藏專區 (NT$ 680)</h3>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin:35px 0 20px 0;">
+                <h3 class="sec-title" style="margin:0;">原創藝術畫作珍藏專區 (NT$ 680)</h3>
+                <button class="btn btn-o" style="font-size:0.7rem;padding:4px 8px;" onclick="adminLogin()">🔒 管理員登入</button>
+            </div>
             
             <div class="art-desc-box">
                 <h4>🎨 品心美學 · 老師精心精選原創藝術流傳與結緣</h4>
-                <p><strong>✨ 為什麼選擇老師精心精選的藝術美學？</strong> 每一幅畫作均為彭品心老師傾注心力、經過嚴格精挑細選的藝術結晶。本專區以親民實惠的結緣價格（均一價 NT$ 680）讓美學與靈性祝福毫無負擔地走入尋常百姓家，為居家或辦公空間營造高雅藝術沸圍，達到陶冶心靈、提升環境磁場的多重效益。</p>
+                <p><strong>✨ 為什麼選擇老師精心精選的藝術美學？</strong> 每一幅畫作均為彭品心老師傾注心力、經過嚴格精挑細選的藝術結晶。本專區以親民實惠的結緣價格（均一價 NT$ 680）讓美學與靈性祝福毫無負擔地走入尋常百姓家，為居家或辦公空間營造高雅藝術氛圍，達到陶冶心靈、提升環境磁場的多重效益。</p>
                 <p><strong>🎯 服務方向與彈性說明：</strong> 為了讓藏家免去繁複昂貴的裝裱開銷，並能完全依據個人空間風格、預算與審美喜好自由發揮，本專區採純原創作品售出（不含裝裱）。藏家可自行挑選喜愛的方式進行裝裱，讓藝術完美融合您的生活空間。</p>
             </div>
 
-            <div class="up-panel">
-                <h4 style="color:var(--gold-l);margin-bottom:10px;">🎨 上傳新畫作至畫廊</h4>
+            <!-- 管理員專用上傳面板 (預設隱藏) -->
+            <div class="up-panel" id="adminPanel">
+                <h4 style="color:var(--gold-l);margin-bottom:10px;">🎨 上傳新畫作至畫廊 (管理者專用)</h4>
                 <input type="text" id="aName" placeholder="請輸入畫作名稱 (例: 雲山禪韻)">
                 <input type="text" id="aWm" value="品心美學 · 彭品心原創" placeholder="浮水印文字">
                 <input type="file" id="aFile" accept="image/*">
                 <button class="btn" style="width:100%;" onclick="uploadArt()">確認上傳並新增畫作 (NT$ 680)</button>
             </div>
+            
             <div class="grid-2" id="artGallery"></div>
         </section>
 
@@ -229,6 +235,20 @@
             if(c) c.classList.add('open');
         }
         
+        // 管理員登入解鎖上傳面板
+        function adminLogin() {
+            let pwd = prompt('請輸入管理員密碼：');
+            if(pwd === 'AF0824af0824$') {
+                let panel = document.getElementById('adminPanel');
+                if(panel) {
+                    panel.classList.add('show');
+                    alert('🔓 管理員驗證成功，上傳面板已展開！');
+                }
+            } else if(pwd !== null) {
+                alert('❌ 密碼錯誤！');
+            }
+        }
+
         function updateCart() {
             let badge = document.getElementById('cCount');
             if(badge) badge.innerText = cart.length;
@@ -329,16 +349,4 @@
                 return;
             }
             let html = '';
-            artworksList.forEach((a, idx) => {
-                html += `
-                    <div class="s-card">
-                        <div>
-                            <div style="position:relative;">
-                                <img src="${a.img}" style="width:100%;height:140px;object-fit:cover;border-radius:6px;border:1px solid var(--border);">
-                                <div style="position:absolute;bottom:8px;right:8px;font-size:0.65rem;background:rgba(0,0,0,0.7);color:#fff;padding:2px 5px;border-radius:3px;">${a.wm}</div>
-                            </div>
-                            <h4 style="color:var(--gold-l);margin-top:8px;">${a.name}</h4>
-                            <div class="art-size-info">📏 規格：${a.size} <br>（不含裝裱，藏家可自理）</div>
-                            <div class="price">NT$ ${a.price}</div>
-                        </div>
-        
+            artworksL
