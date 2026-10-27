@@ -1,870 +1,337 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>品心書閣 ｜ 學術創作 彭品心｜數字風水 紫墨老師</title>
-    <!-- 引入高質感中文字型 -->
+    <title>品心美學 · 彭品心老師官方網站</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&display=swap');
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Noto Serif TC', serif;
-            background-color: #f8f4ee;
-            color: #2c2c2c;
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* 導覽列 */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background-color: rgba(248, 244, 238, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #e6dece;
-        }
-        .nav-container {
-            max-width: 1152px;
-            margin: 0 auto;
-            padding: 0 24px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .brand-title {
-            font-size: 18px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            color: #5c4033;
-            text-decoration: none;
-        }
-        .nav-links {
-            display: none;
-            gap: 24px;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-        .nav-links a {
-            color: #4a4a4a;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: #8c6d53;
-        }
-        .nav-buttons {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .btn-outline {
-            padding: 8px 16px;
-            border: 1px solid #5c4033;
-            color: #5c4033;
-            font-size: 13px;
-            border-radius: 6px;
-            background: transparent;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-block;
-            text-align: center;
-            white-space: nowrap;
-        }
-        .btn-outline:hover {
-            background-color: #5c4033;
-            color: #ffffff;
-        }
-        .btn-primary {
-            padding: 8px 20px;
-            background-color: #5c4033;
-            color: #ffffff;
-            font-size: 13px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: background-color 0.3s;
-            display: inline-block;
-            text-align: center;
-            white-space: nowrap;
-        }
-        .btn-primary:hover {
-            background-color: #4a3328;
-        }
-        .mobile-menu-btn {
-            display: block;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #5c4033;
-            padding: 4px;
-        }
-        #mobile-menu {
-            display: none;
-            background-color: #f8f4ee;
-            border-bottom: 1px solid #e6dece;
-            padding: 16px 24px;
-        }
-        #mobile-menu.active {
-            display: block;
-        }
-        #mobile-menu a {
-            display: block;
-            padding: 8px 0;
-            color: #4a4a4a;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        @media (min-width: 768px) {
-            .nav-links { display: flex; }
-            .mobile-menu-btn { display: none; }
-            .brand-title { font-size: 20px; }
-        }
-
-        /* 區塊通用樣式 */
-        section {
-            padding: 80px 24px;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .text-center { text-align: center; }
-
-        /* Hero 區塊 */
-        .hero-section {
-            background-color: #2c2c2c;
-            color: #ffffff;
-            padding: 64px 24px 96px 24px;
-            text-align: center;
-        }
-        .hero-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            margin-bottom: 24px;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background-color: rgba(255,255,255,0.15);
-            border-radius: 50px;
-            color: #f4efe6;
-        }
-        .hero-title {
-            font-size: 26px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            line-height: 1.5;
-            margin-bottom: 24px;
-        }
-        .hero-desc {
-            font-size: 15px;
-            color: #ece6dc;
-            max-width: 700px;
-            margin: 0 auto 40px auto;
-            line-height: 1.8;
-        }
-        .hero-image-box {
-            max-width: 750px;
-            margin: 0 auto 40px auto;
-            background: rgba(0,0,0,0.4);
-            padding: 12px;
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
-        }
-        .hero-image-box img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            display: block;
-            object-fit: contain;
-        }
-        .hero-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            justify-content: center;
-            align-items: center;
-        }
-        @media (min-width: 640px) {
-            .hero-buttons { flex-direction: row; }
-            .hero-title { font-size: 40px; }
-            .hero-desc { font-size: 17px; }
-        }
-
-        /* 圖片容器通用樣式 */
-        .image-box {
-            max-width: 750px;
-            margin: 0 auto 32px auto;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 12px;
-            border-radius: 16px;
-            border: 1px solid #e6dece;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.08);
-            text-align: center;
-        }
-        .image-box img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            display: block;
-            object-fit: contain;
-        }
-        .img-fallback {
-            display: none;
-            padding: 24px;
-            background: #f4efe6;
-            color: #5c4033;
-            font-size: 14px;
-            border-radius: 10px;
-            border: 1px dashed #8c6d53;
-        }
-
-        /* 關於我們區塊 */
-        .about-card {
-            background-color: rgba(255,255,255,0.85);
-            backdrop-filter: blur(5px);
-            padding: 32px 24px;
-            border-radius: 16px;
-            border: 1px solid #e6dece;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            font-size: 15px;
-            color: #4a4a4a;
-            line-height: 2;
-        }
-        .about-card p { margin-bottom: 20px; }
-        .about-quote {
-            background-color: #f4efe6;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid #8c6d53;
-            font-style: italic;
-            font-size: 14px;
-            color: #5c4033;
-            margin: 24px 0;
-        }
-        @media (min-width: 768px) {
-            .about-card { padding: 48px; font-size: 17px; }
-        }
-
-        /* YouTube 影音區塊 */
-        .zen-section {
-            background-color: #f0eade;
-            border-top: 1px solid #e6dece;
-            border-bottom: 1px solid #e6dece;
-        }
-        .video-box {
-            background: #ffffff;
-            padding: 12px;
-            border-radius: 16px;
-            border: 1px solid #e6dece;
-            max-width: 700px;
-            margin: 0 auto;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-            overflow: hidden;
-            border-radius: 12px;
-        }
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            border: 0;
-        }
-
-        /* 雙欄網格 */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-        }
-        @media (min-width: 768px) {
-            .grid-2 { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        .service-card {
-            background-color: rgba(255,255,255,0.9);
-            padding: 32px;
-            border-radius: 16px;
-            border: 1px solid #e6dece;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .service-list {
-            background-color: #f4efe6;
-            padding: 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            color: #7a7a7a;
-            margin: 20px 0;
-            list-style: none;
-        }
-        .service-list li { margin-bottom: 8px; }
-
-        /* 書籍專區獨立卡片 */
-        .book-card-item {
-            background-color: #ffffff;
-            padding: 32px;
-            border-radius: 16px;
-            border: 1px solid #e6dece;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            margin-bottom: 32px;
-        }
-
-        /* 聯絡專區 */
-        .contact-section {
-            background-color: #f0eade;
-            border-top: 1px solid #e6dece;
-            border-bottom: 1px solid #e6dece;
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-        @media (min-width: 768px) {
-            .contact-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        .contact-card {
-            background-color: #ffffff;
-            padding: 36px 24px;
-            border-radius: 16px;
-            border: 1px solid #e6dece;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
-        }
-        .contact-icon {
-            width: 56px; height: 56px;
-            border-radius: 50%;
-            background-color: #5c4033;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .contact-icon.fb { background-color: #1877f2; }
-        .contact-icon.line { background-color: #06c755; }
-        .contact-icon.mail { background-color: #ea4335; }
-
-        /* 頁尾 */
-        footer {
-            background-color: #2c2c2c;
-            color: #dcd6ce;
-            padding: 48px 24px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        /* 彈窗 Modal */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 999;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            display: none;
-        }
-        .modal-overlay.active {
-            display: flex;
-        }
-        .modal-box {
-            background-color: #f8f4ee;
-            width: 100%;
-            max-width: 450px;
-            padding: 32px;
-            border-radius: 16px;
-            border: 1px solid #e6dece;
-            position: relative;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        .modal-close {
-            position: absolute;
-            top: 16px; right: 16px;
-            background: none; border: none;
-            font-size: 20px; font-weight: bold;
-            color: #5c4033; cursor: pointer;
-        }
-        .form-group {
-            margin-bottom: 16px;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            font-size: 12px;
-            font-weight: bold;
-            color: #5c4033;
-            margin-bottom: 6px;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px 14px;
-            background-color: #ffffff;
-            border: 1px solid #e6dece;
-            border-radius: 8px;
-            font-size: 14px;
-            font-family: inherit;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: #8c6d53;
-        }
+        :root{--bg:#1a1714;--card:#24201c;--border:#4a3d31;--text:#f3efe6;--muted:#d0c5b4;--gold:#d4af37;--gold-l:#f3e5ab;--gold-d:#aa8c2c;}
+        *{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif;-webkit-tap-highlight-color:transparent;}
+        body{background:var(--bg);color:var(--text);line-height:1.8;padding-bottom:80px;overflow-x:hidden;}
+        header{background:rgba(26,23,20,0.95);border-bottom:1px solid var(--border);padding:12px 15px;position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;}
+        .brand{display:flex;align-items:center;gap:10px;}
+        .logo{width:38px;height:38px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:bold;background:rgba(212,175,55,0.1);flex-shrink:0;}
+        .b-text h1{font-size:0.95rem;color:var(--gold-l);white-space:nowrap;}
+        .b-text p{font-size:0.68rem;color:var(--muted);white-space:nowrap;}
+        .h-act{display:flex;gap:6px;}
+        .btn{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#1a1714;border:none;padding:8px 12px;border-radius:16px;font-size:0.78rem;font-weight:bold;cursor:pointer;white-space:nowrap;display:inline-block;text-align:center;}
+        .btn-o{background:transparent;border:1px solid var(--gold);color:var(--gold-l);}
+        .wrap{max-width:800px;margin:0 auto;padding:20px;}
+        .banner{width:100%;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-bottom:20px;}
+        .banner img{width:100%;display:block;}
+        .vip-box{background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:10px;padding:20px;margin-bottom:25px;text-align:center;}
+        .vip-box h3{color:var(--gold-l);font-size:1.15rem;margin-bottom:8px;}
+        .vip-box p{color:var(--muted);font-size:0.85rem;margin-bottom:12px;}
+        .intro-section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:30px 20px;margin-bottom:30px;}
+        .intro-title{text-align:center;font-size:1.8rem;color:var(--gold-l);margin-bottom:10px;letter-spacing:3px;}
+        .intro-subtitle{text-align:center;font-size:1.05rem;color:var(--gold-l);margin-bottom:20px;line-height:1.8;}
+        .intro-content p{margin-bottom:20px;color:var(--muted);text-align:justify;font-size:0.98rem;}
+        .sec-title{font-size:1.4rem;color:var(--gold-l);border-left:4px solid var(--gold);padding-left:12px;margin:35px 0 20px 0;}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:20px;display:flex;gap:20px;align-items:center;}
+        .card img{width:180px;aspect-ratio:16/9;object-fit:cover;border-radius:6px;border:1px solid var(--border);flex-shrink:0;}
+        .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-bottom:25px;}
+        .s-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;}
+        .price{color:var(--gold);font-weight:bold;margin-bottom:6px;}
+        .service-note-box{background:rgba(212,175,55,0.06);border:1px solid var(--border);border-radius:10px;padding:20px;margin-top:20px;margin-bottom:25px;color:var(--muted);font-size:0.9rem;text-align:justify;}
+        .service-note-box h4{color:var(--gold-l);font-size:1.05rem;margin-bottom:10px;}
+        .service-note-box p{margin-bottom:10px;}
+        .art-desc-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:20px;color:var(--muted);font-size:0.9rem;text-align:justify;}
+        .art-desc-box h4{color:var(--gold-l);font-size:1.1rem;margin-bottom:10px;text-align:center;}
+        .art-desc-box p{margin-bottom:10px;}
+        .art-size-info{font-size:0.78rem;color:var(--gold-l);margin-bottom:10px;background:rgba(212,175,55,0.06);padding:4px 8px;border-radius:4px;border:1px dashed var(--border);}
+        .c-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:30px 0;}
+        .c-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:15px;text-align:center;}
+        .c-link{display:inline-block;background:rgba(212,175,55,0.1);border:1px solid var(--gold);color:var(--gold-l);padding:5px 10px;border-radius:15px;font-size:0.72rem;text-decoration:none;}
+        .up-panel{background:rgba(212,175,55,0.05);border:1px dashed var(--gold);border-radius:10px;padding:20px;margin-bottom:25px;}
+        .up-panel input{width:100%;padding:10px;margin-bottom:10px;border-radius:5px;border:1px solid var(--border);background:#1a1714;color:var(--text);}
+        .drawer{position:fixed;top:0;right:-100%;width:100%;max-width:360px;height:100%;background:var(--card);border-left:1px solid var(--border);z-index:9999;padding:20px;transition:right 0.3s ease;display:flex;flex-direction:column;box-shadow:-5px 0 15px rgba(0,0,0,0.5);}
+        .drawer.open{right:0;}
+        .d-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:15px;margin-bottom:15px;}
+        .d-items{flex-grow:1;overflow-y:auto;margin-bottom:15px;}
+        .d-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(74,61,49,0.4);font-size:0.88rem;}
+        .cf input,.cf textarea{width:100%;padding:10px;margin-bottom:10px;background:#1a1714;border:1px solid var(--border);color:var(--text);border-radius:4px;}
+        footer{background:#151311;border:1px dashed var(--border);border-radius:8px;padding:20px;margin-top:40px;font-size:0.78rem;color:#9c9182;}
+        @media(max-width:480px){.card{flex-direction:column;text-align:center;}.card img{width:100%;}.c-3{grid-template-columns:1fr;}}
     </style>
 </head>
 <body>
-
-    <!-- 頂部導覽列 -->
     <header>
-        <div class="nav-container">
-            <a href="#" class="brand-title">品心書閣｜紫墨禪音</a>
-            
-            <nav class="nav-links">
-                <a href="#about">品牌故事</a>
-                <a href="#zen">紫墨禪音</a>
-                <a href="#consulting">高端數字諮詢</a>
-                <a href="#books">學術文學著作</a>
-                <a href="#contact">聯絡方式</a>
-            </nav>
-
-            <div class="nav-buttons">
-                <button type="button" onclick="openAuthModal('register')" class="btn-outline">會員註冊</button>
-                <a href="#consulting" class="btn-primary">立即諮詢</a>
-                <button type="button" onclick="toggleMobileMenu()" class="mobile-menu-btn" aria-label="切換手機選單">
-                    <svg style="width:24px;height:24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+        <div class="brand">
+            <div class="logo">品</div>
+            <div class="b-text">
+                <h1>品心美學</h1>
+                <p>學術文學創作 彭品心老師</p>
             </div>
         </div>
-
-        <!-- 手機版選單 -->
-        <div id="mobile-menu">
-            <a href="#about" onclick="toggleMobileMenu()">品牌故事</a>
-            <a href="#zen" onclick="toggleMobileMenu()">紫墨禪音</a>
-            <a href="#consulting" onclick="toggleMobileMenu()">高端數字諮詢</a>
-            <a href="#books" onclick="toggleMobileMenu()">學術文學著作</a>
-            <a href="#contact" onclick="toggleMobileMenu()">聯絡方式</a>
-            <div style="padding-top: 12px; border-top: 1px solid #e6dece; display: flex; justify-content: space-between;">
-                <button type="button" onclick="openAuthModal('register'); toggleMobileMenu();" style="background:none; border:none; color:#5c4033; font-weight:bold; font-size:13px; cursor:pointer;">會員註冊</button>
-                <button type="button" onclick="openAuthModal('login'); toggleMobileMenu();" style="background:none; border:none; color:#5c4033; font-weight:bold; font-size:13px; cursor:pointer;">會員登入</button>
-            </div>
+        <div class="h-act">
+            <button class="btn" onclick="toggleCart()">🛒 購物車(<span id="cCount">0</span>)</button>
+            <button class="btn btn-o" onclick="toggleMenu()">☰ 選單</button>
         </div>
     </header>
 
-    <!-- 第一區：首頁主橫幅 -->
-    <section class="hero-section">
-        <div class="container" style="max-width: 900px;">
-            <span class="hero-badge">學術創作 彭品心｜數字風水 紫墨老師</span>
-            <h1 class="hero-title">
-                以文字剖析生命的出口<br>以數理重塑風水磁場先知
-            </h1>
-            <p class="hero-desc">
-                品心書閣 & 紫墨禪音是由彭品心親手為您打造的溫馨書閣與動態禪音天地；品牌內容將不斷創新，並持續為您常駐守候。<br>
-                同時，彭品心亦身兼數字風水紫墨老師，主推數字命理與高端風水配置，為您精準規劃生旺吉數，助您在紛擾世間指引坦途。
-            </p>
-
-            <div class="hero-image-box">
-                <img src="1792354723564.png" alt="獨品禪香主圖片" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <div class="img-fallback">圖片載入失敗，請確認 1792354723564.png 是否與網頁在同一個資料夾。</div>
-            </div>
-
-            <div class="hero-buttons">
-                <a href="#consulting" class="btn-primary" style="padding: 12px 32px; font-size: 15px;">探索高端數字諮詢</a>
-                <button type="button" onclick="openAuthModal('register')" class="btn-outline" style="padding: 12px 32px; font-size: 15px; color: #fff; border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.1);">會員註冊</button>
-            </div>
+    <div class="drawer" id="menuDrawer">
+        <div class="d-head">
+            <h3 style="color:var(--gold-l);">📌 網站導覽</h3>
+            <button onclick="toggleMenu()" style="background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;padding:5px;">✕</button>
         </div>
-    </section>
+        <div style="display:flex;flex-direction:column;gap:15px;">
+            <a href="#vip" onclick="toggleMenu()" style="color:var(--gold-l);text-decoration:none;font-size:1rem;">💎 VIP 880 終身會員專區</a>
+            <a href="#intro" onclick="toggleMenu()" style="color:var(--gold-l);text-decoration:none;font-size:1rem;">🌟 靈魂的棲息之處</a>
+            <a href="#books" onclick="toggleMenu()" style="color:var(--gold-l);text-decoration:none;font-size:1rem;">📚 學術文學著作專區</a>
+            <a href="#services" onclick="toggleMenu()" style="color:var(--gold-l);text-decoration:none;font-size:1rem;">🔮 紫墨數字風水服務</a>
+            <a href="#art" onclick="toggleMenu()" style="color:var(--gold-l);text-decoration:none;font-size:1rem;">🎨 原創藝術畫作珍藏專區</a>
+            <a href="#legalFooter" onclick="toggleMenu()" style="color:var(--gold-l);text-decoration:none;font-size:1rem;">⚖️ 智慧財產與服務免責聲明</a>
+        </div>
+    </div>
 
-    <!-- 第二區：品牌故事與綜合介紹 -->
-    <section id="about">
-        <div class="container" style="max-width: 800px;">
-            <div class="text-center" style="margin-bottom: 48px;">
-                <h2 style="font-size: 28px; color: #5c4033; margin-bottom: 16px; line-height: 1.5;">
-                    尋一方心靈庇護所<br>開一條順遂人生路
-                </h2>
-                <div style="width: 48px; height: 2px; background-color: #8c6d53; margin: 0 auto;"></div>
-            </div>
-            
-            <div class="about-card">
-                <p>喧囂的世間，每個人都在找尋安放靈魂的角落。</p>
+    <div class="wrap">
+        <div class="banner"><img src="1792354723564.png" alt="banner"></div>
+
+        <div class="vip-box" id="vip">
+            <h3>✨ VIP 880 會員專屬福利</h3>
+            <p>享有全館著作、數字配置與原創畫作<strong>終身九折</strong>禮遇！</p>
+            <button class="btn" style="max-width:220px;margin:0 auto;display:block;" onclick="add('VIP 880 終身會員方案', 880)">加入 VIP 880 方案 (NT$ 880)</button>
+        </div>
+
+        <section class="intro-section" id="intro">
+            <h2 class="intro-title">靈魂的棲息之處</h2>
+            <p class="intro-subtitle">喧囂的世間，每個人都在找尋安放靈魂的角落，這裡是開運、療愈、藝術與和諧於一體的心靈家園，品心&紫墨老師歡迎您的到來！</p>
+            <div class="intro-content">
                 <p>老師十歲繼承家祖爺爺精準測字絕學，傾於一生對數字、文學、玄學、及各學術類的興趣，藏拙於一身靈性與道行，歷經幾十載世俗的考驗，她清雅脫俗地出落在紅塵萬里天地之間，悉心等待著為值得的人送去福音，將她畢生的學術研究成果，盡心耕織於人類與環境實際需求，廣結善緣、讓福音傳遍千里之外，讓靈慧助人於無形之中。</p>
-                <p>作為一名學術創作者，我透過文字探索思維與文學的邊界。從著作《進階思維的後裔》到《生命的出口》，我試圖為在現代喧囂中迷惘的靈魂，尋找一條通往內在清明的出口；同時，我也將對自然的體悟化為古琴、竹笛與自然音律交織的禪音，搭配全權授權AI人聲及音樂，讓宇宙智慧與美妙音符、為我們洗滌日常的疲憊感、以及無意義的精神內耗，生命可貴，且要好好善待自己。</p>
-                <p>作為數字風水的紫墨老師，我深信萬物皆數，數字不只是符號，更是宇宙自然無形磁場的密碼。多年來，我專注於數字命理與高端空間風水的研究，協助無數朋友透過手機號碼、車牌、店鋪與住址的精準配置，調整磁場、引導其自身吉運增加。</p>
-                
-                <div class="about-quote">
-                    老師也曾歷經過各種人生磨難，也曾找不到生命的出口，幸好少年遺傳家祖爺爺的測字絕學、加上父母嚴苛訓練、又承蒙各方親朋好友之庇佑，才有幸渡過各種劫數。這其中最為關鍵的二十載磨難期間，倚靠家祖遺傳的智慧，且配置了高端數字吉數，在天時、地利、人和、又加上自身五行命理數字與吉數配置的平衡調配下，逐漸蛻變、脫離苦海、並還原了本真的自身風水屬性，因為有了數字風水高端平衡調配，再加上命中吉星護佑，才孕育了今天的品心&紫墨。
-                </div>
-                
-                <p>為感恩之心、為還宇宙潤澤我能活下去的恩澤，我將用重生的機會去做最有意義的事情，那就是將家祖爺爺賜予我的智慧，以及我後天所學布施於苦難的人間，願以我之願力，換取眾生之福祉。</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 第三區：YouTube 播放清單 -->
-    <section id="zen" class="zen-section">
-        <div class="container" style="max-width: 800px; text-align: center;">
-            <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #8c6d53; font-weight: bold;">全站沉浸式影音專區</span>
-            <h2 style="font-size: 26px; color: #5c4033; margin: 8px 0 16px 0;">品心書閣 & 紫墨禪音 (YouTube 播放清單)</h2>
-            <p style="font-size: 15px; color: #6b655f; margin-bottom: 32px;">專屬為您療癒而精心打造</p>
-            
-            <div class="video-box">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLWCv8aarvh3s" title="品心書閣 & 紫墨禪音播放清單" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <!-- 書籍專區 -->
+        <section id="books">
+            <h3 class="sec-title">學術文學著作</h3>
+            <div class="card">
+                <img src="1792440195898.jpg" alt="生命的出口">
+                <div>
+                    <h3>生命的出口</h3>
+                    <div class="price">NT$ 269</div>
+                    <p>深刻探討心靈轉折與生命出口的經典力作。</p>
+                    <button class="btn btn-o" onclick="add('生命的出口', 269)">加入購物車</button>
                 </div>
             </div>
-
-            <div style="margin-top: 24px;">
-                <button type="button" onclick="copyYouTubeShare()" class="btn-primary" style="padding: 12px 24px; font-size: 14px;">
-                    📋 一鍵複製分享文案與連結
-                </button>
-            </div>
-
-            <p style="font-size: 12px; color: #8c6d53; margin-top: 16px;">✨ 支援連續播放與清單切換，隨時隨地享受純粹的靜心時光。</p>
-        </div>
-    </section>
-
-    <!-- 第四區：高端數字配置諮詢 -->
-    <section id="consulting">
-        <div class="container">
-            <div class="text-center" style="margin-bottom: 48px;">
-                <h2 style="font-size: 28px; color: #5c4033; margin-bottom: 16px;">高端數字配置諮詢服務</h2>
-                <p style="font-size: 15px; color: #6b655f; max-width: 700px; margin: 0 auto 24px auto; line-height: 1.8;">
-                    手機、車牌、店鋪、住址配置高端生旺風水號碼，<strong>須請您先自行向相關單位申請或初步選定您喜歡的 3～5 組號碼</strong>，再透過預約表單告訴紫墨老師，老師將為您進行人工深度解析與最終吉凶配置！
-                </p>
-                <div style="max-width: 750px; margin: 0 auto; background: rgba(255,255,255,0.85); padding: 20px; border-radius: 12px; border: 1px solid #e6dece; text-align: left; font-size: 13px; color: #5c4033; line-height: 1.8;">
-                    <span style="font-weight: bold; color: #8c6d53; display: block; font-size: 15px; margin-bottom: 6px;">📌 注意事項：</span>
-                    經過老師數字分析之後，如若您的原生號碼本身就是生旺您的吉數，那麼便是最好的數字配置，則不需要更換，老師則同樣會收取您的鑑定費用，因為是服務性諮詢服務，需要消耗老師大量精力，所以還請緣主務必尊重學術文學的強大驅動力，這也證實了，知因果者、則不畏因果的推理。
+            <div class="card">
+                <img src="1792450518058.jpg" alt="進階思維的後裔">
+                <div>
+                    <h3>進階思維的後裔</h3>
+                    <div class="price">NT$ 269</div>
+                    <p>突破傳統框架，開啟高維度思維模式與人生格局。</p>
+                    <button class="btn btn-o" onclick="add('進階思維的後裔', 269)">加入購物車</button>
                 </div>
             </div>
+        </section>
 
-            <!-- 諮詢專區圖片 -->
-            <div class="image-box">
-                <img src="1791783789840-xWXPooan-0.jpg" alt="紫墨諮詢服務" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <div class="img-fallback">圖片載入失敗，請確認 1791783789840-xWXPooan-0.jpg 是否與網頁在同一個資料夾。</div>
-            </div>
-
+        <section id="services">
+            <h3 class="sec-title">紫墨數字風水</h3>
             <div class="grid-2">
-                <!-- 1. 手機號碼開運配置 -->
-                <div class="service-card">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                            <h3 style="font-size: 18px; color: #5c4033;">1. 手機號碼開運配置</h3>
-                            <span style="font-size: 18px; font-weight: bold; color: #8c6d53;">NT$ 1,680</span>
-                        </div>
-                        <p style="font-size: 14px; color: #6b655f; margin-bottom: 16px;">分析您自行預選的手機號碼磁場優劣，結合生辰八字，從中精選與指引最適合的大吉大利組合。</p>
-                        <ul class="service-list">
-                            <li>• <strong>必填表單</strong>：出生年月日、時辰</li>
-                            <li>• <strong>預選號碼</strong>：您喜歡的 3～5 組備選手機號碼</li>
-                            <li>• <strong>買家備註</strong>：填寫現狀與具體求財/事業訴求</li>
-                        </ul>
-                    </div>
-                    <button type="button" onclick="openOrderModal('手機號碼開運配置', 1680)" class="btn-primary" style="width: 100%; text-align: center; margin-top: 16px;">立即預約諮詢</button>
+                <div class="s-card">
+                    <div><h4>手機號碼配置</h4><div class="price">NT$ 1,680</div><p>選定生旺手機吉號。</p></div>
+                    <button class="btn btn-o" onclick="add('手機號碼配置', 1680)">加入購物車</button>
                 </div>
-
-                <!-- 2. 車牌號碼吉凶配置 -->
-                <div class="service-card">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                            <h3 style="font-size: 18px; color: #5c4033;">2. 車牌號碼吉凶配置</h3>
-                            <span style="font-size: 18px; font-weight: bold; color: #8c6d53;">NT$ 2,280</span>
-                        </div>
-                        <p style="font-size: 14px; color: #6b655f; margin-bottom: 16px;">針對出行交通車牌進行深度磁場解析，避開凶煞組合，挑選能護佑行車平安與出入順遂的吉數。</p>
-                        <ul class="service-list">
-                            <li>• <strong>必填表單</strong>：車主生辰 / 用途性質</li>
-                            <li>• <strong>預選號碼</strong>：您預先看好的 3～5 組車牌號碼</li>
-                            <li>• <strong>買家備註</strong>：用車性質（載客、通勤或商用）</li>
-                        </ul>
-                    </div>
-                    <button type="button" onclick="openOrderModal('車牌號碼吉凶配置', 2280)" class="btn-primary" style="width: 100%; text-align: center; margin-top: 16px;">立即預約諮詢</button>
+                <div class="s-card">
+                    <div><h4>車牌號碼配置</h4><div class="price">NT$ 1,880</div><p>行車平安、磁場加持。</p></div>
+                    <button class="btn btn-o" onclick="add('車牌號碼配置', 1880)">加入購物車</button>
                 </div>
-
-                <!-- 3. 店鋪位址財位配置 -->
-                <div class="service-card">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                            <h3 style="font-size: 18px; color: #5c4033;">3. 店鋪位址財位配置</h3>
-                            <span style="font-size: 18px; font-weight: bold; color: #8c6d53;">NT$ 5,800</span>
-                        </div>
-                        <p style="font-size: 14px; color: #6b655f; margin-bottom: 16px;">針對商業用途的店鋪位址與門牌財位配置進行數字生旺配置與招財化煞解析，助您生意興隆。</p>
-                        <ul class="service-list">
-                            <li>• <strong>必填表單</strong>：店長生辰 / 行業類別</li>
-                            <li>• <strong>預選號碼</strong>：店鋪預選門牌號碼或電話</li>
-                            <li>• <strong>買家備註</strong>：營業方向與主要客群訴求</li>
-                        </ul>
-                    </div>
-                    <button type="button" onclick="openOrderModal('店鋪位址財位配置', 5800)" class="btn-primary" style="width: 100%; text-align: center; margin-top: 16px;">立即預約諮詢</button>
+                <div class="s-card">
+                    <div><h4>住址門牌選吉</h4><div class="price">NT$ 3,680</div><p>住宅環境風水選吉。</p></div>
+                    <button class="btn btn-o" onclick="add('住址門牌選吉', 3680)">加入購物車</button>
                 </div>
-
-                <!-- 4. 住宅位址磁場解析 -->
-                <div class="service-card">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                            <h3 style="font-size: 18px; color: #5c4033;">4. 住宅位址磁場解析</h3>
-                            <span style="font-size: 18px; font-weight: bold; color: #8c6d53;">NT$ 3,600</span>
-                        </div>
-                        <p style="font-size: 14px; color: #6b655f; margin-bottom: 16px;">針對居家住址與門牌數字風水磁場進行全方位磁場解析，化解凶星、增進家庭和睦與家運昌隆。</p>
-                        <ul class="service-list">
-                            <li>• <strong>必填表單</strong>：家庭主要成員生辰</li>
-                            <li>• <strong>預選號碼</strong>：考慮入住的 3～5 組門牌地址</li>
-                            <li>• <strong>買家備註</strong>：房屋坐向與家庭核心期待</li>
-                        </ul>
-                    </div>
-                    <button type="button" onclick="openOrderModal('住宅位址磁場解析', 3600)" class="btn-primary" style="width: 100%; text-align: center; margin-top: 16px;">立即預約諮詢</button>
+                <div class="s-card">
+                    <div><h4>店鋪門牌選吉</h4><div class="price">NT$ 5,680</div><p>商舖聚財、客源廣進。</p></div>
+                    <button class="btn btn-o" onclick="add('店鋪門牌選吉', 5680)">加入購物車</button>
                 </div>
             </div>
+
+            <div class="service-note-box">
+                <h4>📌 購買服務注意事項與流程說明：</h4>
+                <p><strong>1. 預約流程：</strong>手機、車牌、店鋪、住址配置高端生旺風水號碼，須請您先自行向相關單位申請或初步選定您喜歡的 3～5 組號碼，再透過預約表單告訴紫墨老師，老師將為您進行人工深度解析與最終吉凶配置！</p>
+                <p><strong>2. 專業鑑定聲明：</strong>經過老師數字分析之後，如若您的原生號碼本身就是生旺您的吉數，那麼便是最好的數字配置，則不需要更換；然而，老師則同樣會收取您的鑑定費用。因為這是消耗老師大量精力的專業性諮詢服務，還請緣主務必尊重學術文學的強大驅動力，這也證實了：「知因果者、則不畏因果」的推理。</p>
+            </div>
+        </section>
+
+        <div class="c-3">
+            <div class="c-card"><h5 style="color:var(--gold-l);font-size:0.82rem;margin-bottom:8px;">官方 LINE</h5><a href="https://line.me/" target="_blank" class="c-link">點擊加入 LINE</a></div>
+            <div class="c-card"><h5 style="color:var(--gold-l);font-size:0.82rem;margin-bottom:8px;">FB 官方粉專</h5><a href="https://www.facebook.com/pengpinxin/" target="_blank" class="c-link">造訪粉絲專頁</a></div>
+            <div class="c-card"><h5 style="color:var(--gold-l);font-size:0.82rem;margin-bottom:8px;">電子郵箱</h5><a href="mailto:Aaa0987955906aaa@gmail.com" class="c-link">發送電子郵件</a></div>
         </div>
-    </section>
 
-    <!-- 第五區：學術文學著作（已精確對應兩張正確橫式書籍圖片檔名） -->
-    <section id="books" style="background-color: #f0eade; border-top: 1px solid #e6dece;">
-        <div class="container" style="max-width: 800px;">
-            <div class="text-center" style="margin-bottom: 48px;">
-                <h2 style="font-size: 28px; color: #5c4033; margin-bottom: 16px;">學術文學著作專區</h2>
-                <p style="font-size: 15px; color: #6b655f; max-width: 600px; margin: 0 auto;">彭品心精心撰寫之代表作，為當代心靈與思維帶來全新啟發。</p>
-            </div>
-
-            <!-- 書籍 1：《進階思維的後裔》 -->
-            <div class="book-card-item">
-                <div class="image-box" style="margin-bottom: 20px;">
-                    <img src="1792450518058.jpg" alt="進階思維的後裔" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div class="img-fallback">圖片載入失敗，請確認 1792450518058.jpg 是否與網頁在同一個資料夾。</div>
-                </div>
-                <span style="font-size: 11px; background-color: #f4efe6; color: #8c6d53; padding: 4px 10px; border-radius: 4px; font-weight: bold; display: inline-block; margin-bottom: 12px;">學術創作 ｜ 博客思出版社發行</span>
-                <h3 style="font-size: 20px; color: #5c4033; margin-bottom: 8px;">《進階思維的後裔》</h3>
-                <p style="font-size: 14px; color: #6b655f; line-height: 1.8; margin-bottom: 16px;">
-                    為學術創作，旨在探索現代認知演進，突破既有框架，從哲學與科學視角審視自我潛能。
-                </p>
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-top: 1px solid #e6dece; padding-top: 16px; margin-top: 16px;">
-                    <div>
-                        <span style="font-size: 16px; font-weight: bold; color: #8c6d53; display: block;">典藏價 NT$ 269</span>
-                        <span style="font-size: 12px; color: #8c6d53;">（購書可於備註指定作者親筆簽名）</span>
-                    </div>
-                    <button type="button" onclick="openOrderModal('《進階思維的後裔》', 269)" class="btn-primary">立即典藏購書</button>
-                </div>
-            </div>
-
-            <!-- 書籍 2：《生命的出口》 -->
-            <div class="book-card-item">
-                <div class="image-box" style="margin-bottom: 20px;">
-                    <img src="1792440195898.jpg" alt="生命的出口" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div class="img-fallback">圖片載入失敗，請確認 1792440195898.jpg 是否與網頁在同一個資料夾。</div>
-                </div>
-                <span style="font-size: 11px; background-color: #f4efe6; color: #8c6d53; padding: 4px 10px; border-radius: 4px; font-weight: bold; display: inline-block; margin-bottom: 12px;">心靈文學 ｜ 博客思出版社發行</span>
-                <h3 style="font-size: 20px; color: #5c4033; margin-bottom: 8px;">《生命的出口》</h3>
-                <p style="font-size: 14px; color: #6b655f; line-height: 1.8; margin-bottom: 16px;">
-                    是心靈文學著作，內容在生命的轉折與迷惘中，以深刻思維與文學筆觸，引領讀者尋找內在自由。
-                </p>
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-top: 1px solid #e6dece; padding-top: 16px; margin-top: 16px;">
-                    <div>
-                        <span style="font-size: 16px; font-weight: bold; color: #8c6d53; display: block;">典藏價 NT$ 269</span>
-                        <span style="font-size: 12px; color: #8c6d53;">（購書可於備註指定作者親筆簽名）</span>
-                    </div>
-                    <button type="button" onclick="openOrderModal('《生命的出口》', 269)" class="btn-primary">立即典藏購書</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 第六區：與我們聯繫 -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="text-center" style="margin-bottom: 48px;">
-                <h2 style="font-size: 28px; color: #5c4033; margin-bottom: 16px;">與我們聯繫</h2>
-                <p style="font-size: 15px; color: #6b655f;">隨時歡迎您的垂詢與交流，品心書閣與您常駐守候。</p>
-            </div>
-
-            <div class="contact-grid">
-                <!-- 1. Facebook 粉絲專頁 -->
-                <div class="contact-card">
-                    <div>
-                        <div class="contact-icon fb">f</div>
-                        <h3 style="font-size: 18px; color: #5c4033; margin-bottom: 8px;">Facebook 粉絲專頁</h3>
-                        <p style="font-size: 13.5px; color: #6b655f; margin-bottom: 24px;">關注最新動態與靈性分享，隨時與老師互動交流。</p>
-                    </div>
-                    <a href="https://www.facebook.com/PENGPINXIN/" target="_blank" class="btn-outline" style="width: 100%;">前往粉絲專頁</a>
-                </div>
-
-                <!-- 2. 電子信箱服務 -->
-                <div class="contact-card">
-                    <div>
-                        <div class="contact-icon mail">✉</div>
-                        <h3 style="font-size: 18px; color: #5c4033; margin-bottom: 8px;">電子信箱服務</h3>
-                        <p style="font-size: 13.5px; color: #6b655f; margin-bottom: 24px;">商務合作與深度諮詢洽談，點擊直接前往 Google 郵箱寄信。</p>
-                    </div>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Aaa0987955906aaa@gmail.com" target="_blank" class="btn-outline" style="width: 100%;">前往 Google 郵箱</a>
-                </div>
-
-                <!-- 3. 官方 Line 預約 -->
-                <div class="contact-card">
-                    <div>
-                        <div class="contact-icon line">💬</div>
-                        <h3 style="font-size: 18px; color: #5c4033; margin-bottom: 8px;">官方 Line 預約</h3>
-                        <p style="font-size: 13.5px; color: #6b655f; margin-bottom: 24px;">一對一數字風水即時對話，快速為您解答與預約配置。</p>
-                    </div>
-                    <a href="https://line.me" target="_blank" class="btn-outline" style="width: 100%;">加入官方 Line</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 頁尾 -->
-    <footer>
-        <div class="container">
-            <p style="margin-bottom: 8px; font-weight: bold; letter-spacing: 1px; line-height: 1.6;">
-                品心書閣 & 紫墨禪音<br>
-                學術創作 彭品心 ｜ 數字風水  紫墨老師
-            </p>
-            <p style="font-size: 12px; color: #9c948c;">Copyright © 2026 PinXin Book House. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <!-- 會員登入/註冊 Modal 彈窗 -->
-    <div id="auth-modal" class="modal-overlay">
-        <div class="modal-box">
-            <button type="button" onclick="closeAuthModal()" class="modal-close">&times;</button>
-            <h3 id="modal-title" style="font-size: 20px; color: #5c4033; margin-bottom: 24px; text-align: center;">會員註冊</h3>
+        <!-- 原創藝術畫作專區 -->
+        <section id="art">
+            <h3 class="sec-title">原創藝術畫作珍藏專區 (NT$ 680)</h3>
             
-            <form onsubmit="event.preventDefault(); alert('功能建置中，敬請期待！'); closeAuthModal();">
-                <div class="form-group" id="name-group">
-                    <label>真實姓名 / 稱謂</label>
-                    <input type="text" placeholder="請輸入您的稱謂">
-                </div>
-                <div class="form-group">
-                    <label>電子郵件</label>
-                    <input type="email" placeholder="example@email.com" required>
-                </div>
-                <div class="form-group">
-                    <label>密碼</label>
-                    <input type="password" placeholder="請輸入密碼" required>
-                </div>
-                <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; margin-top: 8px;" id="modal-submit-btn">確認註冊</button>
-            </form>
+            <div class="art-desc-box">
+                <h4>🎨 品心美學 · 老師精心精選原創藝術流傳與結緣</h4>
+                <p><strong>✨ 為什麼選擇老師精心精選的藝術美學？</strong> 每一幅畫作均為彭品心老師傾注心力、經過嚴格精挑細選的藝術結晶。本專區以親民實惠的結緣價格（均一價 NT$ 680）讓美學與靈性祝福毫無負擔地走入尋常百姓家，為居家或辦公空間營造高雅藝術氛圍，達到陶冶心靈、提升環境磁場的多重效益。</p>
+                <p><strong>🎯 服務方向與彈性說明：</strong> 為了讓藏家免去繁複昂貴的裝裱開銷，並能完全依據個人空間風格、預算與審美喜好自由發揮，本專區採純原創作品售出（不含裝裱）。藏家可自行挑選喜愛的方式進行裝裱，讓藝術完美融合您的生活空間。</p>
+            </div>
+
+            <div class="up-panel">
+                <h4 style="color:var(--gold-l);margin-bottom:10px;">🎨 上傳新畫作至畫廊</h4>
+                <input type="text" id="aName" placeholder="請輸入畫作名稱 (例: 雲山禪韻)">
+                <input type="text" id="aWm" value="品心美學 · 彭品心原創" placeholder="浮水印文字">
+                <input type="file" id="aFile" accept="image/*">
+                <button class="btn" style="width:100%;" onclick="uploadArt()">確認上傳並新增畫作 (NT$ 680)</button>
+            </div>
+            <div class="grid-2" id="artGallery"></div>
+        </section>
+
+        <footer id="legalFooter">
+            <h5 style="color:var(--gold-l);margin-bottom:8px;">【智慧財產與服務免責聲明】</h5>
+            <p>本網站所載之所有學術文學著作、原創美學畫作、數字風水配置及門牌選吉內容，均受智慧財產權與著作權法保護，未經授權切勿任意轉載。相關命理與數字磁場解析係結合傳統文化與心靈輔助研究，僅供個人格局優化與心靈參考，重大決策與財務投資仍須依循個人獨立判斷並自負其責。</p>
+            <p style="margin-top:15px;text-align:center;color:var(--gold);">© 品心美學 ｜ 學術文學創作 彭品心老師 官方網站</p>
+        </footer>
+    </div>
+
+    <!-- 購物車抽屜 -->
+    <div class="drawer" id="cartDrawer">
+        <div class="d-head">
+            <h3 style="color:var(--gold-l);">🛒 您的專屬購物車與結帳單</h3>
+            <button onclick="toggleCart()" style="background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#1a1714;border:none;padding:6px 12px;border-radius:12px;font-weight:bold;cursor:pointer;font-size:0.85rem;">✕ 關閉</button>
+        </div>
+        <div class="d-items" id="cList"><p style="color:var(--muted);text-align:center;margin-top:20px;">購物車目前是空的</p></div>
+        <div class="cf">
+            <button class="btn btn-o" style="width:100%;margin-bottom:12px;" onclick="toggleCart()">⬅ 返回瀏覽網頁</button>
+            <input type="text" id="vCode" placeholder="優惠碼 (輸入 VIP880 享9折)">
+            <button class="btn btn-o" style="width:100%;margin-bottom:10px;" onclick="applyVip()">套用 VIP 九折</button>
+            <input type="text" id="cName" placeholder="您的姓名 *">
+            <input type="tel" id="cPhone" placeholder="聯絡電話 *">
+            <input type="email" id="cEmail" placeholder="電子信箱 Email *">
+            <textarea id="cRemark" rows="2" placeholder="備註需求 (寄送地址、預約方向等)"></textarea>
+            <div style="display:flex;justify-content:space-between;margin:10px 0;color:var(--gold-l);font-weight:bold;">
+                <span>總計：</span><span id="cTotal">NT$ 0</span>
+            </div>
+            <button class="btn" style="width:100%;" onclick="checkout()">送出預約訂單並直達 LINE</button>
         </div>
     </div>
 
-    <!-- 服務預約與購書專用 Modal 彈窗 -->
-    <div id="order-modal" class="modal-overlay">
-        <div class="modal-box">
-            <button type="button" onclick="closeOrderModal()" class="modal-close">&times;</button>
-            <h3 id="order-modal-title" style="font-size: 20px; color: #5c4033; margin-bottom: 12px; text-align: center;">服務預約 / 購書登記</h3>
-            <p id="order-modal-price" style="font-size: 14px; color: #8c6d53; text-align: center; margin-bottom: 20px; font-weight: bold;"></p>
-            
-            <form onsubmit="event.preventDefault(); alert('表單已送出！紫墨老師與團隊將盡快與您聯繫。'); closeOrderModal();">
-                <div class="form-group">
-                    <label>您的姓名 / 稱謂</label>
-                    <input type="text" placeholder="請輸入您的真實姓名" required>
-                </div>
-                <div class="form-group">
-                    <label>聯絡電話 / Line ID</label>
-                    <input type="text" placeholder="請輸入電話或Line" required>
-                </div>
-                <div class="form-group">
-                    <label>預選號碼 / 生辰八字 / 收件備註 (可註明親筆簽名)</label>
-                    <textarea rows="4" placeholder="請填寫您的預選號碼、生辰八字或購書簽名備註..." required></textarea>
-                </div>
-                <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; margin-top: 8px;">確認送出預約登記</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- JavaScript 互動腳本 -->
     <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('active');
+        let cart = JSON.parse(localStorage.getItem('zimo_cart')) || [];
+        let isVip = localStorage.getItem('zimo_is_vip') === 'true';
+        let artworksList = JSON.parse(localStorage.getItem('zimo_artworks')) || [];
+        
+        function toggleMenu() {
+            let m = document.getElementById('menuDrawer');
+            if(m) m.classList.toggle('open');
+        }
+        
+        function toggleCart() {
+            let c = document.getElementById('cartDrawer');
+            if(c) c.classList.toggle('open');
+        }
+        
+        function add(name, price) {
+            cart.push({name, price});
+            saveCartAndSync();
+            let c = document.getElementById('cartDrawer');
+            if(c) c.classList.add('open');
+        }
+        
+        function updateCart() {
+            let badge = document.getElementById('cCount');
+            if(badge) badge.innerText = cart.length;
+            let list = document.getElementById('cList'), total = 0, html = '';
+            if(!list) return;
+            if(cart.length === 0) {
+                list.innerHTML = '<p style="color:var(--muted);text-align:center;margin-top:20px;">購物車目前是空的</p>';
+                document.getElementById('cTotal').innerText = 'NT$ 0';
+                return;
+            }
+            cart.forEach((i, idx) => {
+                total += i.price;
+                html += `<div class="d-item"><span>${i.name}</span><span>NT$ ${i.price} <button onclick="rm(${idx})" style="background:none;border:none;color:#e74c3c;cursor:pointer;padding:4px;font-size:1rem;">🗑️</button></span></div>`;
+            });
+            if(isVip) {
+                total = Math.round(total * 0.9); 
+                html += `<div style="color:var(--gold);font-size:0.85rem;margin-top:8px;">✨ 已套用 VIP 九折優惠</div>`;
+            }
+            list.innerHTML = html;
+            document.getElementById('cTotal').innerText = 'NT$ ' + total;
         }
 
-        function openAuthModal(mode) {
-            const modal = document.getElementById('auth-modal');
-            const title = document.getElementById('modal-title');
-            const nameGroup = document.getElementById('name-group');
-            const submitBtn = document.getElementById('modal-submit-btn');
+        function saveCartAndSync() {
+            localStorage.setItem('zimo_cart', JSON.stringify(cart));
+            updateCart();
+        }
 
-            if (mode === 'login') {
-                title.innerText = '會員登入';
-                nameGroup.style.display = 'none';
-                submitBtn.innerText = '立即登入';
+        function saveArtAndSync() {
+            localStorage.setItem('zimo_artworks', JSON.stringify(artworksList));
+            renderArt();
+        }
+
+        function rm(idx) {
+            cart.splice(idx, 1);
+            saveCartAndSync();
+        }
+
+        function applyVip() {
+            let codeInput = document.getElementById('vCode');
+            let code = codeInput ? codeInput.value.trim() : '';
+            if(code === 'VIP880') {
+                isVip = true;
+                localStorage.setItem('zimo_is_vip', 'true');
+                alert('VIP880 驗證成功！享 9 折');
+                updateCart();
             } else {
-                title.innerText = '會員註冊';
-                nameGroup.style.display = 'block';
-                submitBtn.innerText = '確認註冊';
-            }
-
-            modal.classList.add('active');
-        }
-
-        function closeAuthModal() {
-            document.getElementById('auth-modal').classList.remove('active');
-        }
-
-        function openOrderModal(itemName, itemPrice) {
-            const modal = document.getElementById('order-modal');
-            document.getElementById('order-modal-title').innerText = '預約項目：' + itemName;
-            document.getElementById('order-modal-price').innerText = '價格：NT$ ' + itemPrice;
-            modal.classList.add('active');
-        }
-
-        function closeOrderModal() {
-            document.getElementById('order-modal').classList.remove('active');
-        }
-
-        function copyYouTubeShare() {
-            const shareText = '品心書閣 & 紫墨禪音 療癒播放清單：https://www.youtube-nocookie.com/embed/videoseries?list=PLWCv8aarvh3s';
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(shareText).then(() => {
-                    alert('📋 已成功一鍵複製 YouTube 分享文案與連結！');
-                }).catch(() => {
-                    fallbackCopy(shareText);
-                });
-            } else {
-                fallbackCopy(shareText);
+                alert('優惠碼錯誤');
             }
         }
-
-        function fallbackCopy(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            textarea.style.position = 'fixed';
-            document.body.appendChild(textarea);
-            textarea.focus();
-            textarea.select();
-            try {
-                document.execCommand('copy');
-                alert('📋 已成功一鍵複製 YouTube 分享文案與連結！');
-            } catch (err) {
-                alert('複製失敗，請手動複製連結。');
+        
+        function uploadArt() {
+            let nameInput = document.getElementById('aName');
+            let wmInput = document.getElementById('aWm');
+            let fileInput = document.getElementById('aFile');
+            
+            let name = nameInput ? nameInput.value.trim() : '';
+            let wm = wmInput ? wmInput.value.trim() : '品心美學 · 彭品心原創';
+            
+            if(!name || !fileInput || !fileInput.files || fileInput.files.length === 0) {
+                alert('請輸入畫作名稱並選擇圖片檔案！');
+                return;
             }
-            document.body.removeChild(textarea);
+            
+            let file = fileInput.files[0];
+            let reader = new FileReader();
+            
+            reader.onload = function(e) {
+                let base64Image = e.target.result;
+                artworksList.push({name: name, price: 680, img: base64Image, wm: wm, size: '典藏預覽'});
+                saveArtAndSync();
+                if(nameInput) nameInput.value = '';
+                if(fileInput) fileInput.value = '';
+                alert('✅ 畫作已成功上傳並新增至畫廊！');
+            };
+            reader.readAsDataURL(file);
         }
-    </script>
-</body>
-</html>
+
+        function delArt(idx) {
+            if(confirm('確定刪除此畫作？')) {
+                artworksList.splice(idx, 1);
+                saveArtAndSync();
+            }
+        }
+
+        function renderArt() {
+            let g = document.getElementById('artGallery');
+            if(!g) return;
+            if(artworksList.length === 0) {
+                g.innerHTML = '<p style="color:var(--muted);grid-column:span 2;text-align:center;padding:20px;">目前尚無上傳畫作</p>';
+                return;
+            }
+            let html = '';
+            artworksList.forEach((a, idx) => {
+                html += `
+                    <div class="s-card">
+                        <div>
+                            <div style="position:relative;">
+                                <img src="${a.img}" style="width:100%;height:140px;object-fit:cover;border-radius:6px;border:1px solid var(--border);">
+                                <div style="position:absolute;bottom:8px;right:8px;font-size:0.65rem;background:rgba(0,0,0,0.7);color:#fff;padding:2px 5px;border-radius:3px;">${a.wm}</div>
+                            </div>
+                            <h4 style="color:var(--gold-l);margin-top:8px;">${a.name}</h4>
+                            <div class="art-size-info">📏 規格：${a.size} <br>（不含裝裱，藏家可自理）</div>
+                            <div class="price">NT$ ${a.price}</div>
+                        </div>
+                        <div style="display:flex;gap:5px;margin-top:8px;">
+                            <button class="btn btn-
