@@ -42,6 +42,8 @@
         .c-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:30px 0;}
         .c-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:15px;text-align:center;}
         .c-link{display:inline-block;background:rgba(212,175,55,0.1);border:1px solid var(--gold);color:var(--gold-l);padding:5px 10px;border-radius:15px;font-size:0.72rem;text-decoration:none;}
+        .login-box{background:rgba(212,175,55,0.05);border:1px solid var(--border);border-radius:10px;padding:15px;margin-bottom:20px;display:flex;gap:10px;}
+        .login-box input{flex-grow:1;padding:8px 12px;background:#1a1714;border:1px solid var(--border);color:var(--text);border-radius:6px;font-size:0.85rem;}
         .up-panel{background:rgba(212,175,55,0.05);border:1px dashed var(--gold);border-radius:10px;padding:20px;margin-bottom:25px;display:none;}
         .up-panel.show{display:block;}
         .up-panel input{width:100%;padding:10px;margin-bottom:10px;border-radius:5px;border:1px solid var(--border);background:#1a1714;color:var(--text);}
@@ -161,10 +163,7 @@
 
         <!-- 原創藝術畫作專區 -->
         <section id="art">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin:35px 0 20px 0;">
-                <h3 class="sec-title" style="margin:0;">原創藝術畫作珍藏專區 (NT$ 680)</h3>
-                <button class="btn btn-o" style="font-size:0.7rem;padding:4px 8px;" onclick="adminLogin()">🔒 管理員登入</button>
-            </div>
+            <h3 class="sec-title" style="margin:35px 0 20px 0;">原創藝術畫作珍藏專區 (NT$ 680)</h3>
             
             <div class="art-desc-box">
                 <h4>🎨 品心美學 · 老師精心精選原創藝術流傳與結緣</h4>
@@ -172,7 +171,13 @@
                 <p><strong>🎯 服務方向與彈性說明：</strong> 為了讓藏家免去繁複昂貴的裝裱開銷，並能完全依據個人空間風格、預算與審美喜好自由發揮，本專區採純原創作品售出（不含裝裱）。藏家可自行挑選喜愛的方式進行裝裱，讓藝術完美融合您的生活空間。</p>
             </div>
 
-            <!-- 管理員專用上傳面板 (預設隱藏，需輸入密碼 AF0824af0824$ 才能解鎖) -->
+            <!-- 內嵌式密碼解鎖登入列（絕對不會被手機擋住） -->
+            <div class="login-box" id="loginBox">
+                <input type="password" id="adminPwdInput" placeholder="請輸入管理員密碼以解鎖上傳...">
+                <button class="btn" onclick="checkAdminPwd()">解鎖上傳</button>
+            </div>
+
+            <!-- 管理員專用上傳面板 (預設隱藏) -->
             <div class="up-panel" id="adminPanel">
                 <h4 style="color:var(--gold-l);margin-bottom:10px;">🎨 上傳新畫作至畫廊 (管理者專用)</h4>
                 <input type="text" id="aName" placeholder="請輸入畫作名稱 (例: 雲山禪韻)">
@@ -235,16 +240,14 @@
             if(c) c.classList.add('open');
         }
         
-        // 管理員登入解鎖上傳面板
-        function adminLogin() {
-            let pwd = prompt('請輸入管理員密碼：');
-            if(pwd === 'AF0824af0824$') {
-                let panel = document.getElementById('adminPanel');
-                if(panel) {
-                    panel.classList.add('show');
-                    alert('🔓 管理員驗證成功，上傳面板已展開！');
-                }
-            } else if(pwd !== null) {
+        // 內嵌式密碼驗證解鎖上傳面板
+        function checkAdminPwd() {
+            let inputVal = document.getElementById('adminPwdInput').value.trim();
+            if(inputVal === 'AF0824af0824$') {
+                document.getElementById('adminPanel').classList.add('show');
+                document.getElementById('loginBox').style.display = 'none'; // 驗證成功後隱藏密碼輸入框
+                alert('🔓 管理員驗證成功！');
+            } else {
                 alert('❌ 密碼錯誤！');
             }
         }
@@ -339,13 +342,4 @@
                 artworksList.splice(idx, 1);
                 saveArtAndSync();
             }
-        }
-
-        function renderArt() {
-            let g = document.getElementById('artGallery');
-            if(!g) return;
-            if(artworksList.length === 0) {
-                g.innerHTML = '<p style="color:var(--muted);grid-column:span 2;text-align:center;padding:20px;">目前尚無上傳畫作</p>';
-                return;
-            }
-            let html = 
+       
