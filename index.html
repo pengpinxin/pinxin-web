@@ -5,54 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>品心美學 · 彭品心老師官方網站</title>
     <style>
-        :root{--bg:#1a1714;--card:#24201c;--border:#4a3d31;--text:#f3efe6;--muted:#d0c5b4;--gold:#d4af37;--gold-l:#f3e5ab;--gold-d:#aa8c2c;}
-        *{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif;-webkit-tap-highlight-color:transparent;}
-        body{background:var(--bg);color:var(--text);line-height:1.8;padding-bottom:80px;overflow-x:hidden;}
+        :root{--bg:#1a1714;--card:#24201c;--border:#4a3d31;--gold-1:#f3e5ab;--gold-2:#d4af37;--muted:#d0c5b4;--text:#f3efe6;}
+        *{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif;}
+        body{background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:80px;}
         header{background:rgba(26,23,20,0.95);border-bottom:1px solid var(--border);padding:12px 15px;position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;}
         .brand{display:flex;align-items:center;gap:10px;}
-        .logo{width:38px;height:38px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:bold;background:rgba(212,175,55,0.1);flex-shrink:0;}
-        .b-text h1{font-size:0.95rem;color:var(--gold-l);white-space:nowrap;}
-        .b-text p{font-size:0.68rem;color:var(--muted);white-space:nowrap;}
+        .logo{width:38px;height:38px;border:1px solid var(--gold-2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold-2);font-weight:bold;background:rgba(212,175,55,0.1);}
+        .b-text h1{font-size:0.95rem;color:var(--gold-1);margin:0;}
+        .b-text p{font-size:0.68rem;color:var(--muted);margin:0;}
         .h-act{display:flex;gap:6px;}
-        .btn{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#1a1714;border:none;padding:8px 12px;border-radius:16px;font-size:0.78rem;font-weight:bold;cursor:pointer;white-space:nowrap;display:inline-block;text-align:center;}
-        .btn-o{background:transparent;border:1px solid var(--gold);color:var(--gold-l);}
+        .btn-gold{background:linear-gradient(135deg,#d4af37,#aa8c2c);color:#1a1714;border:none;padding:8px 12px;border-radius:16px;font-size:0.78rem;font-weight:bold;cursor:pointer;}
+        .btn-outline{background:transparent;border:1px solid var(--gold-2);color:var(--gold-1);padding:8px 12px;border-radius:16px;font-size:0.78rem;font-weight:bold;cursor:pointer;}
         .wrap{max-width:800px;margin:0 auto;padding:20px;}
         .banner{width:100%;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-bottom:20px;}
         .banner img{width:100%;display:block;}
-        .vip-box{background:rgba(212,175,55,0.08);border:1px solid var(--gold);border-radius:10px;padding:20px;margin-bottom:25px;text-align:center;}
-        .vip-box h3{color:var(--gold-l);font-size:1.15rem;margin-bottom:8px;}
-        .vip-box p{color:var(--muted);font-size:0.85rem;margin-bottom:12px;}
-        .intro-section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:30px 20px;margin-bottom:30px;}
-        .intro-title{text-align:center;font-size:1.8rem;color:var(--gold-l);margin-bottom:10px;letter-spacing:3px;}
-        .intro-subtitle{text-align:center;font-size:1.05rem;color:var(--gold-l);margin-bottom:20px;line-height:1.8;}
-        .intro-content p{margin-bottom:20px;color:var(--muted);text-align:justify;font-size:0.98rem;}
-        .sec-title{font-size:1.4rem;color:var(--gold-l);border-left:4px solid var(--gold);padding-left:12px;margin:35px 0 20px 0;}
-        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:20px;display:flex;gap:20px;align-items:center;}
-        .card img{width:180px;aspect-ratio:16/9;object-fit:cover;border-radius:6px;border:1px solid var(--border);flex-shrink:0;}
-        .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-bottom:25px;}
-        .s-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;}
-        .price{color:var(--gold);font-weight:bold;margin-bottom:6px;}
-        .service-note-box{background:rgba(212,175,55,0.06);border:1px solid var(--border);border-radius:10px;padding:20px;margin-top:20px;margin-bottom:25px;color:var(--muted);font-size:0.9rem;text-align:justify;}
-        .service-note-box h4{color:var(--gold-l);font-size:1.05rem;margin-bottom:10px;}
-        .service-note-box p{margin-bottom:10px;}
-        .art-desc-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:20px;color:var(--muted);font-size:0.9rem;text-align:justify;}
-        .art-desc-box h4{color:var(--gold-l);font-size:1.1rem;margin-bottom:10px;text-align:center;}
-        .art-desc-box p{margin-bottom:10px;}
-        .art-size-info{font-size:0.78rem;color:var(--gold-l);margin-bottom:10px;background:rgba(212,175,55,0.06);padding:4px 8px;border-radius:4px;border:1px dashed var(--border);}
-        .c-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:30px 0;}
-        .c-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:15px;text-align:center;}
-        .c-link{display:inline-block;background:rgba(212,175,55,0.1);border:1px solid var(--gold);color:var(--gold-l);padding:5px 10px;border-radius:15px;font-size:0.72rem;text-decoration:none;}
-        .drawer{position:fixed;top:0;right:-100%;width:100%;max-width:360px;height:100%;background:var(--card);border-left:1px solid var(--border);z-index:9999;padding:20px;transition:right 0.3s ease;display:flex;flex-direction:column;box-shadow:-5px 0 15px rgba(0,0,0,0.5);}
-        .drawer.open{right:0;}
-        .d-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:15px;margin-bottom:15px;}
-        .d-items{flex-grow:1;overflow-y:auto;margin-bottom:15px;}
-        .d-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(74,61,49,0.4);font-size:0.88rem;}
-        .cf input,.cf textarea{width:100%;padding:10px;margin-bottom:10px;background:#1a1714;border:1px solid var(--border);color:var(--text);border-radius:4px;}
-        footer{background:#151311;border:1px dashed var(--border);border-radius:8px;padding:20px;margin-top:40px;font-size:0.78rem;color:#9c9182;}
-        @media(max-width:480px){.card{flex-direction:column;text-align:center;}.card img{width:100%;}.c-3{grid-template-columns:1fr;}}
+        section{margin-bottom:30px;}
+        h3.sec-title{font-size:1.4rem;color:var(--gold-1);border-left:4px solid var(--gold-2);padding-left:12px;margin:35px 0 20px 0;}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:20px;}
+        input, button{font-size:0.9rem;}
+        .admin-box{background:rgba(212,175,55,0.05);border:1px solid var(--border);border-radius:10px;padding:15px;margin-bottom:20px;display:flex;gap:10px;}
+        .admin-box input{flex:1;padding:8px 12px;background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:6px;}
+        .upload-form{background:rgba(212,175,55,0.08);border:1px dashed var(--gold-2);border-radius:10px;padding:20px;margin-bottom:25px;}
+        .upload-form input[type="text"], .upload-form input[type="file"]{width:100%;padding:10px;margin-bottom:10px;border-radius:5px;border:1px solid var(--border);background:var(--bg);color:var(--text);}
+        .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;}
+        .art-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:15px;display:flex;flex-direction:column;justify-content:space-between;}
+        .art-img-wrap{position:relative;}
+        .art-img-wrap img{width:100%;height:140px;object-fit:cover;border-radius:6px;border:1px solid var(--border);}
+        .wm{position:absolute;bottom:8px;right:8px;font-size:0.65rem;background:rgba(0,0,0,0.7);color:#fff;padding:2px 5px;border-radius:3px;}
+        .drawer{position:fixed;top:0;right:0;width:100%;max-width:360px;height:100%;background:var(--card);border-left:1px solid var(--border);z-index:9999;padding:20px;display:none;flex-direction:column;box-shadow:-5px 0 15px rgba(0,0,0,0.5);}
+        .drawer.open{display:flex;}
+        .drawer-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:15px;margin-bottom:15px;}
+        .drawer-header h3{color:var(--gold-1);margin:0;}
+        .close-btn{background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;}
     </style>
 </head>
 <body>
+
     <header>
         <div class="brand">
             <div class="logo">品</div>
@@ -62,282 +50,218 @@
             </div>
         </div>
         <div class="h-act">
-            <button class="btn" onclick="toggleCart()">🛒 購物車(<span id="cCount">0</span>)</button>
-            <button class="btn btn-o" onclick="toggleMenu()">☰ 選單</button>
+            <button class="btn-gold" onclick="toggleCart()">🛒 購物車(<span id="cartCount">0</span>)</button>
+            <button class="btn-outline" onclick="toggleMenu()">☰ 選單</button>
         </div>
     </header>
 
-    <div class="drawer" id="menuDrawer">
-        <div class="d-head">
-            <h3 style="color:var(--gold-l);">📌 網站導覽</h3>
-            <button onclick="toggleMenu()" style="background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;padding:5px;">✕</button>
+    <!-- 導覽抽屜 -->
+    <div id="menuDrawer" class="drawer">
+        <div class="drawer-header">
+            <h3>📌 網站導覽</h3>
+            <button class="close-btn" onclick="toggleMenu()">✕</button>
         </div>
         <div style="display:flex;flex-direction:column;gap:15px;">
-            <a href="#vip" onclick="toggleMenu()" style="color:var(--gold-l);text-decoration:none;font-size:1rem;">💎 VIP 880 終身會員專區</a>
-            <a href="#intro" onclick="toggleMenu()" style="color:var(--gold-l);text-decoration:none;font-size:1rem;">🌟 靈魂的棲息之處</a>
-            <a href="#books" onclick="toggleMenu()" style="color:var(--gold-l);text-decoration:none;font-size:1rem;">📚 學術文學著作專區</a>
-            <a href="#services" onclick="toggleMenu()" style="color:var(--gold-l);text-decoration:none;font-size:1rem;">🔮 紫墨數字風水服務</a>
-            <a href="#art" onclick="toggleMenu()" style="color:var(--gold-l);text-decoration:none;font-size:1rem;">🎨 原創藝術畫作珍藏專區</a>
-            <a href="#legalFooter" onclick="toggleMenu()" style="color:var(--gold-l);text-decoration:none;font-size:1rem;">⚖️ 智慧財產與服務免責聲明</a>
+            <a href="#vip" onclick="toggleMenu()" style="color:var(--gold-1);text-decoration:none;">💎 VIP 880 終身會員專區</a>
+            <a href="#intro" onclick="toggleMenu()" style="color:var(--gold-1);text-decoration:none;">🌟 靈魂的棲息之處</a>
+            <a href="#art" onclick="toggleMenu()" style="color:var(--gold-1);text-decoration:none;">🎨 原創藝術畫作珍藏專區</a>
         </div>
     </div>
 
     <div class="wrap">
-        <div class="banner"><img src="1792354723564.png" alt="banner"></div>
-
-        <div class="vip-box" id="vip">
-            <h3>✨ VIP 880 會員專屬福利</h3>
-            <p>享有全館著作、數字配置與原創畫作<strong>終身九折</strong>禮遇！</p>
-            <button class="btn" style="max-width:220px;margin:0 auto;display:block;" onclick="add('VIP 880 終身會員方案', 880)">加入 VIP 880 方案 (NT$ 880)</button>
+        <div class="banner">
+            <img src="1792354723564.png" alt="banner">
         </div>
 
-        <section class="intro-section" id="intro">
-            <h2 class="intro-title">靈魂的棲息之處</h2>
-            <p class="intro-subtitle">喧囂的世間，每個人都在找尋安放靈魂的角落，這裡是開運、療愈、藝術與和諧於一體的心靈家園，品心&紫墨老師歡迎您的到來！</p>
-            <div class="intro-content">
-                <p>老師十歲繼承家祖爺爺精準測字絕學，傾於一生對數字、文學、玄學、及各學術類的興趣，藏拙於一身靈性與道行，歷經幾十載世俗的考驗，她清雅脫俗地出落在紅塵萬里天地之間，悉心等待著為值得的人送去福音，將她畢生的學術研究成果，盡心耕織於人類與環境實際需求，廣結善緣、讓福音傳遍千里之外，讓靈慧助人於無形之中。</p>
-            </div>
-        </section>
-
-        <!-- 書籍專區 -->
-        <section id="books">
-            <h3 class="sec-title">學術文學著作</h3>
-            <div class="card">
-                <img src="1792440195898.jpg" alt="生命的出口">
-                <div>
-                    <h3>生命的出口</h3>
-                    <div class="price">NT$ 269</div>
-                    <p>深刻探討心靈轉折與生命出口的經典力作。</p>
-                    <button class="btn btn-o" onclick="add('生命的出口', 269)">加入購物車</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="1792450518058.jpg" alt="進階思維的後裔">
-                <div>
-                    <h3>進階思維的後裔</h3>
-                    <div class="price">NT$ 269</div>
-                    <p>突破傳統框架，開啟高維度思維模式與人生格局。</p>
-                    <button class="btn btn-o" onclick="add('進階思維的後裔', 269)">加入購物車</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="services">
-            <h3 class="sec-title">紫墨數字風水</h3>
-            <div class="grid-2">
-                <div class="s-card">
-                    <div><h4>手機號碼配置</h4><div class="price">NT$ 1,680</div><p>選定生旺手機吉號。</p></div>
-                    <button class="btn btn-o" onclick="add('手機號碼配置', 1680)">加入購物車</button>
-                </div>
-                <div class="s-card">
-                    <div><h4>車牌號碼配置</h4><div class="price">NT$ 1,880</div><p>行車平安、磁場加持。</p></div>
-                    <button class="btn btn-o" onclick="add('車牌號碼配置', 1880)">加入購物車</button>
-                </div>
-                <div class="s-card">
-                    <div><h4>住址門牌選吉</h4><div class="price">NT$ 3,680</div><p>住宅環境風水選吉。</p></div>
-                    <button class="btn btn-o" onclick="add('住址門牌選吉', 3680)">加入購物車</button>
-                </div>
-                <div class="s-card">
-                    <div><h4>店鋪門牌選吉</h4><div class="price">NT$ 5,680</div><p>商舖聚財、客源廣進。</p></div>
-                    <button class="btn btn-o" onclick="add('店鋪門牌選吉', 5680)">加入購物車</button>
-                </div>
-            </div>
-
-            <div class="service-note-box">
-                <h4>📌 購買服務注意事項與流程說明：</h4>
-                <p><strong>1. 預約流程：</strong>手機、車牌、店鋪、住址配置高端生旺風水號碼，須請您先自行向相關單位申請或初步選定您喜歡的 3～5 組號碼，再透過預約表單告訴紫墨老師，老師將為您進行人工深度解析與最終吉凶配置！</p>
-                <p><strong>2. 專業鑑定聲明：</strong>經過老師數字分析之後，如若您的原生號碼本身就是生旺您的吉數，那麼便是最好的數字配置，則不需要更換；然而，老師則同樣會收取您的鑑定費用。因為這是消耗老師大量精力的專業性諮詢服務，還請緣主務必尊重學術文學的強大驅動力，這也證實了：「知因果者、則不畏因果」的推理。</p>
-            </div>
-        </section>
-
-        <div class="c-3">
-            <div class="c-card"><h5 style="color:var(--gold-l);font-size:0.82rem;margin-bottom:8px;">官方 LINE</h5><a href="https://line.me/" target="_blank" class="c-link">點擊加入 LINE</a></div>
-            <div class="c-card"><h5 style="color:var(--gold-l);font-size:0.82rem;margin-bottom:8px;">FB 官方粉專</h5><a href="https://www.facebook.com/pengpinxin/" target="_blank" class="c-link">造訪粉絲專頁</a></div>
-            <div class="c-card"><h5 style="color:var(--gold-l);font-size:0.82rem;margin-bottom:8px;">電子郵箱</h5><a href="mailto:Aaa0987955906aaa@gmail.com" class="c-link">發送電子郵件</a></div>
+        <div id="vip" class="card" style="background:rgba(212,175,55,0.08);border-color:var(--gold-2);text-align:center;">
+            <h3 style="color:var(--gold-1);font-size:1.15rem;margin-bottom:8px;">✨ VIP 880 會員專屬福利</h3>
+            <p style="color:var(--muted);font-size:0.85rem;margin-bottom:12px;">享有全館著作、數字配置與原創畫作<strong>終身九折</strong>禮遇！</p>
+            <button class="btn-gold" onclick="addToCart('VIP 880 終身會員方案', 880)">加入 VIP 880 方案 (NT$ 880)</button>
         </div>
 
-        <!-- 原創藝術畫作珍藏專區 -->
+        <section id="intro" class="card">
+            <h2 style="text-align:center;font-size:1.8rem;color:var(--gold-1);margin-bottom:10px;letter-spacing:3px;">靈魂的棲息之處</h2>
+            <p style="text-align:center;font-size:1.05rem;color:var(--gold-1);margin-bottom:20px;line-height:1.8;">喧囂的世間，每個人都在找尋安放靈魂的角落，這裡是開運、療愈、藝術與和諧於一體的心靈家園，品心&紫墨老師歡迎您的到來！</p>
+            <p style="color:var(--muted);text-align:justify;font-size:0.95rem;margin:0;">老師十歲繼承家祖爺爺精準測字絕學，傾於一生對數字、文學、玄學、及各學術類的興趣，藏拙於一身靈性與道行，歷經幾十載世俗的考驗，她清雅脫俗地出落在紅塵萬里天地之間，悉心等待著為值得的人送去福音。</p>
+        </section>
+
+        <!-- 原創藝術畫作專區 -->
         <section id="art">
-            <h3 class="sec-title" style="margin:35px 0 20px 0;">原創藝術畫作珍藏專區 (NT$ 680)</h3>
-            
-            <div class="art-desc-box">
-                <h4>🎨 品心美學 · 老師精心精選原創藝術流傳與結緣</h4>
-                <p><strong>✨ 為什麼選擇老師精心精選的藝術美學？</strong> 每一幅畫作均為彭品心老師傾注心力、經過嚴格精挑細選的藝術結晶。本專區以親民實惠的結緣價格（均一價 NT$ 680）讓美學與靈性祝福毫無負擔地走入尋常百姓家，為居家或辦公空間營造高雅藝術氛圍，達到陶冶心靈、提升環境磁場的多重效益。</p>
-                <p><strong>🎯 服務方向與彈性說明：</strong> 為了讓藏家免去繁複昂貴的裝裱開銷，並能完全依據個人空間風格、預算與審美喜好自由發揮，本專區採純原創作品售出（不含裝裱）。藏家可自行挑選喜愛的方式進行裝裱，讓藝術完美融合您的生活空間。</p>
+            <h3 class="sec-title">原創藝術畫作珍藏專區 (NT$ 680)</h3>
+            <div class="card" style="color:var(--muted);font-size:0.9rem;text-align:justify;">
+                <h4 style="color:var(--gold-1);font-size:1.1rem;margin-bottom:10px;text-align:center;">🎨 品心美學 · 老師精心精選原創藝術流傳與結緣</h4>
+                <p>每一幅畫作均為彭品心老師傾注心力、經過嚴格精挑細選的藝術結晶。本專區以親民實惠的結緣價格（均一價 NT$ 680）讓美學與靈性祝福毫無負擔地走入尋常百姓家。</p>
             </div>
-            
-            <div class="grid-2" id="artGallery"></div>
-        </section>
 
-        <footer id="legalFooter">
-            <h5 style="color:var(--gold-l);margin-bottom:8px;">【智慧財產與服務免責聲明】</h5>
-            <p>本網站所載之所有學術文學著作、原創美學畫作、數字風水配置及門牌選吉內容，均受智慧財產權與著作權法保護，未經授權切勿任意轉載。相關命理與數字磁場解析係結合傳統文化與心靈輔助研究，僅供個人格局優化與心靈參考，重大決策與財務投資仍須依循個人獨立判斷並自負其責。</p>
-            <p style="margin-top:15px;text-align:center;color:var(--gold);">© 品心美學 ｜ 學術文學創作 彭品心老師 官方網站</p>
-        </footer>
+            <!-- 管理員登入區 -->
+            <div id="loginSection" class="admin-box">
+                <input type="password" id="adminPwd" placeholder="請輸入管理員密碼解鎖上傳...">
+                <button class="btn-gold" onclick="checkAdmin()">解鎖</button>
+            </div>
+
+            <!-- 上傳表單（預設隱藏） -->
+            <div id="uploadSection" class="upload-form" style="display:none;">
+                <h4 style="color:var(--gold-1);margin-bottom:10px;">🎨 上傳新畫作至 Google 雲端硬碟 (管理者專用)</h4>
+                <input type="text" id="artName" placeholder="請輸入畫作名稱 (例: 雲山禪韻)">
+                <input type="file" id="artFile" accept="image/*">
+                <button class="btn-gold" style="width:100%;padding:10px;" onclick="uploadArtwork()">確認上傳並新增畫作 (NT$ 680)</button>
+            </div>
+
+            <div id="artGrid" class="grid">
+                <!-- 動態載入畫作 -->
+            </div>
+        </section>
     </div>
 
     <!-- 購物車抽屜 -->
-    <div class="drawer" id="cartDrawer">
-        <div class="d-head">
-            <h3 style="color:var(--gold-l);">🛒 您的專屬購物車與結帳單</h3>
-            <button onclick="toggleCart()" style="background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#1a1714;border:none;padding:6px 12px;border-radius:12px;font-weight:bold;cursor:pointer;font-size:0.85rem;">✕ 關閉</button>
+    <div id="cartDrawer" class="drawer">
+        <div class="drawer-header">
+            <h3>🛒 您的專屬購物車</h3>
+            <button class="close-btn" onclick="toggleCart()">✕</button>
         </div>
-        <div class="d-items" id="cList"><p style="color:var(--muted);text-align:center;margin-top:20px;">購物車目前是空的</p></div>
-        <div class="cf">
-            <button class="btn btn-o" style="width:100%;margin-bottom:12px;" onclick="toggleCart()">⬅ 返回瀏覽網頁</button>
-            <input type="text" id="vCode" placeholder="優惠碼 (輸入 VIP880 享9折)">
-            <button class="btn btn-o" style="width:100%;margin-bottom:10px;" onclick="applyVip()">套用 VIP 九折</button>
-            <input type="text" id="cName" placeholder="您的姓名 *">
-            <input type="tel" id="cPhone" placeholder="聯絡電話 *">
-            <input type="email" id="cEmail" placeholder="電子信箱 Email *">
-            <textarea id="cRemark" rows="2" placeholder="備註需求 (寄送地址、預約方向等)"></textarea>
-            <div style="display:flex;justify-content:space-between;margin:10px 0;color:var(--gold-l);font-weight:bold;">
-                <span>總計：</span><span id="cTotal">NT$ 0</span>
-            </div>
-            <button class="btn" style="width:100%;" onclick="checkout()">送出預約訂單並直達 LINE</button>
+        <div id="cartItems" style="flex-grow:1;overflow-y:auto;">
+            <p style="color:var(--muted);text-align:center;margin-top:20px;">購物車目前是空的</p>
+        </div>
+        <div>
+            <button class="btn-gold" style="width:100%;padding:10px;" onclick="window.open('https://line.me/', '_blank')">前往 LINE 聯絡老師結帳</button>
         </div>
     </div>
 
     <script>
-        let cart = JSON.parse(localStorage.getItem('zimo_cart')) || [];
-        let isVip = localStorage.getItem('zimo_is_vip') === 'true';
-        let artworksList = JSON.parse(localStorage.getItem('zimo_artworks')) || [
-            {name: '典藏精選畫作 01', price: 680, img: '1792354723564.png', wm: '品心美學 · 彭品心原創', size: '典藏預覽'}
-        ];
-        
-        function toggleMenu() {
-            let m = document.getElementById('menuDrawer');
-            if(m) m.classList.toggle('open');
-        }
-        
-        function toggleCart() {
-            let c = document.getElementById('cartDrawer');
-            if(c) c.classList.toggle('open');
-        }
-        
-        function add(name, price) {
-            cart.push({name, price});
-            saveCartAndSync();
-            let c = document.getElementById('cartDrawer');
-            if(c) c.classList.add('open');
-        }
-        
-        function updateCart() {
-            let badge = document.getElementById('cCount');
-            if(badge) badge.innerText = cart.length;
-            
-            let list = document.getElementById('cList');
-            let totalEl = document.getElementById('cTotal');
-            if(!list || !totalEl) return;
-            
-            if(cart.length === 0) {
-                list.innerHTML = '<p style="color:var(--muted);text-align:center;margin-top:20px;">購物車目前是空的</p>';
-                totalEl.innerText = 'NT$ 0';
+        let cart = JSON.parse(localStorage.getItem('zimo_cart') || '[]');
+        let artworks = JSON.parse(localStorage.getItem('zimo_artworks') || JSON.stringify([
+            { name: '典藏精選畫作 01', price: 680, img: '1792354723564.png', wm: '品心美學 · 彭品心原創', size: '典藏預覽' }
+        ]));
+
+        function renderCart() {
+            document.getElementById('cartCount').innerText = cart.length;
+            const container = document.getElementById('cartItems');
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="color:var(--muted);text-align:center;margin-top:20px;">購物車目前是空的</p>';
                 return;
             }
-            
-            let total = 0;
-            let html = '';
-            cart.forEach((i, idx) => {
-                total += i.price;
-                html += `<div class="d-item"><span>${i.name}</span><span>NT$ ${i.price} <button onclick="rm(${idx})" style="background:none;border:none;color:#e74c3c;cursor:pointer;padding:4px;font-size:1rem;">🗑️</button></span></div>`;
-            });
-            
-            if(isVip) {
-                total = Math.round(total * 0.9); 
-                html += `<div style="color:var(--gold);font-size:0.85rem;margin-top:8px;">✨ 已套用 VIP 九折優惠</div>`;
-            }
-            
-            list.innerHTML = html;
-            totalEl.innerText = 'NT$ ' + total;
+            container.innerHTML = cart.map((item, idx) => `
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(74,61,49,0.4);font-size:0.88rem;">
+                    <span>${item.name}</span>
+                    <span>NT$ ${item.price} <button onclick="removeFromCart(${idx})" style="background:none;border:none;color:#e74c3c;cursor:pointer;">🗑️</button></span>
+                </div>
+            `).join('');
         }
 
-        function saveCartAndSync() {
+        function addToCart(name, price) {
+            cart.push({ name, price });
             localStorage.setItem('zimo_cart', JSON.stringify(cart));
-            updateCart();
-        }
-
-        function rm(idx) {
-            cart.splice(idx, 1);
-            saveCartAndSync();
-        }
-
-        function applyVip() {
-            let codeInput = document.getElementById('vCode');
-            let code = codeInput ? codeInput.value.trim() : '';
-            if(code === 'VIP880') {
-                isVip = true;
-                localStorage.setItem('zimo_is_vip', 'true');
-                alert('VIP880 驗證成功！享 9 折');
-                updateCart();
-            } else {
-                alert('優惠碼錯誤');
-            }
-        }
-
-        function renderArt() {
-            let g = document.getElementById('artGallery');
-            if(!g) return;
-            if(artworksList.length === 0) {
-                g.innerHTML = '<p style="color:var(--muted);grid-column:span 2;text-align:center;padding:20px;">目前尚無藏品展示</p>';
-                return;
-            }
-            let html = '';
-            artworksList.forEach((a) => {
-                html += `
-                    <div class="s-card">
-                        <div>
-                            <div style="position:relative;">
-                                <img src="${a.img}" style="width:100%;height:140px;object-fit:cover;border-radius:6px;border:1px solid var(--border);">
-                                <div style="position:absolute;bottom:8px;right:8px;font-size:0.65rem;background:rgba(0,0,0,0.7);color:#fff;padding:2px 5px;border-radius:3px;">${a.wm}</div>
-                            </div>
-                            <h4 style="color:var(--gold-l);margin-top:8px;">${a.name}</h4>
-                            <div class="art-size-info">📏 規格：${a.size} <br>（不含裝裱，藏家可自理）</div>
-                            <div class="price">NT$ ${a.price}</div>
-                        </div>
-                        <div style="margin-top:8px;">
-                            <button class="btn btn-o" style="width:100%;font-size:0.75rem;padding:6px;" onclick="add('${a.name}', ${a.price})">加入購物車</button>
-                        </div>
-                    </div>
-                `;
-            });
-            g.innerHTML = html;
-        }
-
-        function checkout() {
-            if(cart.length === 0) {
-                alert('購物車是空的，請先加入商品！');
-                return;
-            }
-            let nameInput = document.getElementById('cName');
-            let phoneInput = document.getElementById('cPhone');
-            let emailInput = document.getElementById('cEmail');
-            let remarkInput = document.getElementById('cRemark');
-            
-            let name = nameInput ? nameInput.value.trim() : '';
-            let phone = phoneInput ? phoneInput.value.trim() : '';
-            let email = emailInput ? emailInput.value.trim() : '';
-            
-            if(!name || !phone || !email) {
-                alert('請完整填寫姓名、聯絡電話與電子信箱！');
-                return;
-            }
-            
-            alert('訂單資料已送出！即將為您開啟 LINE 聯絡老師。');
-            
-            cart = [];
-            saveCartAndSync();
-            if(nameInput) nameInput.value = '';
-            if(phoneInput) phoneInput.value = '';
-            if(emailInput) emailInput.value = '';
-            if(remarkInput) remarkInput.value = '';
+            renderCart();
             toggleCart();
-            
-            window.open('https://line.me/', '_blank');
         }
 
-        updateCart();
-        renderArt();
+        function removeFromCart(idx) {
+            cart.splice(idx, 1);
+            localStorage.setItem('zimo_cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        function toggleCart() {
+            document.getElementById('cartDrawer').classList.toggle('open');
+        }
+
+        function toggleMenu() {
+            document.getElementById('menuDrawer').classList.toggle('open');
+        }
+
+        function checkAdmin() {
+            const pwd = document.getElementById('adminPwd').value;
+            if (pwd === 'AF0824af0824$') {
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('uploadSection').style.display = 'block';
+                renderArtworks();
+                alert('🔓 管理員驗證成功，上傳面板已展開！');
+            } else {
+                alert('❌ 密碼錯誤！');
+            }
+        }
+
+        function renderArtworks() {
+            const isAdmin = document.getElementById('uploadSection').style.display === 'block';
+            const grid = document.getElementById('artGrid');
+            grid.innerHTML = artworks.map((art, idx) => `
+                <div class="art-card">
+                    <div>
+                        <div class="art-img-wrap">
+                            <img src="${art.img}" alt="${art.name}">
+                            <div class="wm">${art.wm}</div>
+                        </div>
+                        <h4 style="color:var(--gold-1);margin:8px 0 4px 0;">${art.name}</h4>
+                        <div style="font-size:0.78rem;color:var(--gold-1);margin-bottom:6px;">📏 規格：${art.size}（不含裝裱）</div>
+                        <div style="color:var(--gold-2);font-weight:bold;margin-bottom:6px;">NT$ ${art.price}</div>
+                    </div>
+                    <div style="display:flex;gap:5px;margin-top:8px;">
+                        <button class="btn-outline" style="flex:1;padding:6px;font-size:0.75rem;" onclick="addToCart('${art.name}', ${art.price})">加入購物車</button>
+                        ${isAdmin ? `<button onclick="removeArt(${idx})" style="background:#e74c3c;color:#fff;border:none;padding:6px 10px;border-radius:16px;font-size:0.75rem;cursor:pointer;">刪除</button>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function removeArt(idx) {
+            if (confirm('確定刪除此畫作？')) {
+                artworks.splice(idx, 1);
+                localStorage.setItem('zimo_artworks', JSON.stringify(artworks));
+                renderArtworks();
+            }
+        }
+
+        async function uploadArtwork() {
+            const name = document.getElementById('artName').value;
+            const fileInput = document.getElementById('artFile');
+            const file = fileInput.files[0];
+
+            if (!name || !file) {
+                alert('請輸入畫作名稱並選擇圖片檔案！');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = async function() {
+                const base64Data = reader.result;
+                try {
+                    const res = await fetch('/api/upload', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            filename: file.name,
+                            data: base64Data,
+                            mimeType: file.type
+                        })
+                    });
+
+                    const result = await res.json();
+                    if (result.success) {
+                        const newArt = {
+                            name: name,
+                            price: 680,
+                            img: result.url,
+                            wm: '品心美學 · 彭品心原創',
+                            size: '典藏預覽'
+                        };
+                        artworks.unshift(newArt);
+                        localStorage.setItem('zimo_artworks', JSON.stringify(artworks));
+                        document.getElementById('artName').value = '';
+                        fileInput.value = '';
+                        renderArtworks();
+                        alert('✅ 畫作已成功上傳至 Google 雲端硬碟並同步至畫廊！');
+                    } else {
+                        alert('上傳失敗：' + (result.error || '未知錯誤'));
+                    }
+                } catch (err) {
+                    alert('上傳發生錯誤，請檢查網路連線');
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        renderCart();
+        renderArtworks();
     </script>
 </body>
 </html>
