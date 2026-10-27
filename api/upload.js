@@ -1,75 +1,56 @@
-import { google } from 'googleapis';
-import { Readable } from 'stream';
-
-// 放大 Next.js 預設的傳輸大小限制（避免大圖片上傳失敗）
-export const config = {
-    api: {
-        bodyParser: {
-            sizeLimit: '10mb',
-        },
-    },
-};
-
 export default async function handler(req, res) {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ success: false, error: 'Method not allowed' });
+  if (req.method !== 'POST') {
+    return res.status(405).json({ success: false, error: 'Method not allowed' });
+  }
+
+  try {
+    const { filename, data } = req.body;
+
+    if (!filename || !data) {
+      return res.status(400).json({ success: false, error: '缺少檔案名稱或資料' });
     }
 
-    try {
-        let bodyData = req.body;
-        if (typeof bodyData === 'string') {
-            bodyData = JSON.parse(bodyData);
-        }
+    const base64Data = data.replace(/^data:image\/\w+;base64,/, '');
+    const uniqueFilename = `${Date.now()}-${filename}`;
+    
+    const owner = process.env.GITHUB_OWNER || 'pengpinxin';
+    const repo = process.env.GITHUB_REPO || 'pinxin-web';
+    const token = process.env.GITHUB_TOKEN;
 
-        const { filename, data, mimeType } = bodyData;
-        if (!data) {
-            return res.status(400).json({ success: false, error: 'No image data provided' });
-        }
-
-        const base64Data = data.split(';base64,').pop();
-        const buffer = Buffer.from(base64Data, 'base64');
-
-        const auth = new google.auth.GoogleAuth({
-            credentials: {
-                client_email: process.env.GOOGLE_CLIENT_EMAIL,
-                private_key: process.env.GOOGLE_PRIVATE_KEY ? process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n') : undefined,
-            },
-            scopes: ['https://www.googleapis.com/auth/drive.file'],
-        });
-
-        const drive = google.drive({ version: 'v3', auth });
-
-        const bufferStream = new Readable();
-        bufferStream.push(buffer);
-        bufferStream.push(null);
-
-        const response = await drive.files.create({
-            requestBody: {
-                name: filename || 'art_upload.jpg',
-                parents: process.env.GOOGLE_DRIVE_FOLDER_ID ? [process.env.GOOGLE_DRIVE_FOLDER_ID] : [],
-            },
-            media: {
-                mimeType: mimeType || 'image/jpeg',
-                body: bufferStream,
-            },
-            fields: 'id',
-        });
-
-        const fileId = response.data.id;
-
-        await drive.permissions.create({
-            fileId: fileId,
-            requestBody: {
-                role: 'reader',
-                type: 'anyone',
-            },
-        });
-
-        const fileUrl = `https://lh3.googleusercontent.com/d/${fileId}`;
-
-        return res.status(200).json({ success: true, url: fileUrl });
-    } catch (err) {
-        console.error('Google Drive Upload Error:', err);
-        return res.status(500).json({ success: false, error: err.message });
+    if (!token) {
+      return res.status(500).json({ success: false, error: '伺服器未設定 GITHUB_TOKEN' });
     }
+
+    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${uniqueFilename}`;
+
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/vnd.github+json',
+        'Content-Type': 'application/json',
+        'User-Agent': 'Vercel-Upload-App'
+      },
+      body: JSON.stringify({
+        message: `Upload new artwork: ${uniqueFilename}`,
+        content: base64Data,
+        branch: 'main'
+      })
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.message || 'GitHub 上傳失敗');
+    }
+
+    return res.status(200).json({
+      success: true,
+      url: uniqueFilename
+    });
+
+  } catch (error) {
+    console.error('上傳失敗:', error);
+    return res.status(500).json({ success: false, error: error.message });
+  }
 }
