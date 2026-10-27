@@ -232,23 +232,31 @@
         function updateCart() {
             let badge = document.getElementById('cCount');
             if(badge) badge.innerText = cart.length;
-            let list = document.getElementById('cList'), total = 0, html = '';
-            if(!list) return;
+            
+            let list = document.getElementById('cList');
+            let totalEl = document.getElementById('cTotal');
+            if(!list || !totalEl) return;
+            
             if(cart.length === 0) {
                 list.innerHTML = '<p style="color:var(--muted);text-align:center;margin-top:20px;">購物車目前是空的</p>';
-                document.getElementById('cTotal').innerText = 'NT$ 0';
+                totalEl.innerText = 'NT$ 0';
                 return;
             }
+            
+            let total = 0;
+            let html = '';
             cart.forEach((i, idx) => {
                 total += i.price;
                 html += `<div class="d-item"><span>${i.name}</span><span>NT$ ${i.price} <button onclick="rm(${idx})" style="background:none;border:none;color:#e74c3c;cursor:pointer;padding:4px;font-size:1rem;">🗑️</button></span></div>`;
             });
+            
             if(isVip) {
                 total = Math.round(total * 0.9); 
                 html += `<div style="color:var(--gold);font-size:0.85rem;margin-top:8px;">✨ 已套用 VIP 九折優惠</div>`;
             }
+            
             list.innerHTML = html;
-            document.getElementById('cTotal').innerText = 'NT$ ' + total;
+            totalEl.innerText = 'NT$ ' + total;
         }
 
         function saveCartAndSync() {
@@ -333,5 +341,4 @@
                             <div class="art-size-info">📏 規格：${a.size} <br>（不含裝裱，藏家可自理）</div>
                             <div class="price">NT$ ${a.price}</div>
                         </div>
-                        <div style="display:flex;gap:5px;margin-top:8px;">
-                            <button class="btn btn-
+        
