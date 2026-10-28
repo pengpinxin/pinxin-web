@@ -25,47 +25,55 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.7;
+            line-height: 1.6;
             padding-bottom: 80px;
         }
 
-        /* 頂部導覽列 */
+        /* 手機優化頂部導覽列 */
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
             background-color: var(--card-bg);
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
+            padding: 12px 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
         }
 
         .brand-info {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .brand-logo {
-            width: 42px;
-            height: 42px;
+            width: 38px;
+            height: 38px;
             border: 1px solid var(--gold-primary);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--gold-primary);
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
             border-radius: 6px;
             background: rgba(212, 175, 55, 0.05);
+            flex-shrink: 0;
         }
 
         .brand-text h1 {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--gold-light);
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .brand-text p {
@@ -75,90 +83,85 @@
 
         .nav-buttons {
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
 
         .btn-gold {
             background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
             color: #121110;
             border: none;
-            padding: 7px 12px;
-            font-size: 12px;
+            padding: 6px 10px;
+            font-size: 11px;
             font-weight: bold;
-            border-radius: 20px;
+            border-radius: 16px;
             cursor: pointer;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
+            white-space: nowrap;
         }
 
         .btn-outline {
             background: transparent;
             color: var(--gold-primary);
             border: 1px solid var(--gold-primary);
-            padding: 7px 12px;
-            font-size: 12px;
-            border-radius: 20px;
+            padding: 6px 10px;
+            font-size: 11px;
+            border-radius: 16px;
             cursor: pointer;
+            text-decoration: none;
+            white-space: nowrap;
         }
 
         /* 內容容器 */
         .container {
             max-width: 600px;
-            margin: 20px auto;
-            padding: 0 15px;
+            margin: 15px auto;
+            padding: 0 12px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         /* 卡片通用樣式 */
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            padding: 22px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        .hero-img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 15px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         }
 
         h2.section-title {
             color: var(--gold-light);
-            font-size: 18px;
-            margin-bottom: 12px;
-            letter-spacing: 1.5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
             border-left: 3px solid var(--gold-primary);
-            padding-left: 10px;
+            padding-left: 8px;
         }
 
         p.section-desc {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-main);
             text-align: justify;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .price {
             color: var(--gold-light);
             font-weight: bold;
-            font-size: 16px;
-            margin: 10px 0;
+            font-size: 15px;
+            margin: 8px 0;
         }
 
         /* 產品網格 */
         .product-item {
             border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-            padding-bottom: 15px;
-            margin-bottom: 15px;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
         }
         .product-item:last-child {
             border-bottom: none;
@@ -168,37 +171,37 @@
 
         /* 表單樣式 */
         .form-group {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
         .form-group label {
             display: block;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--gold-light);
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
         .form-control {
             width: 100%;
-            padding: 10px;
+            padding: 9px;
             background: #121110;
             border: 1px solid var(--border-color);
             color: var(--text-main);
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 13px;
         }
         .form-submit-btn {
             width: 100%;
-            padding: 12px;
+            padding: 11px;
             background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
             color: #121110;
             font-weight: bold;
             border: none;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 15px;
-            margin-top: 5px;
+            font-size: 14px;
+            margin-top: 4px;
         }
 
-        /* 購物車抽屜 / 區塊 */
+        /* 購物車區塊 */
         #cart-section {
             display: none;
             background: #181614;
@@ -210,32 +213,37 @@
             font-size: 11px;
             color: var(--text-muted);
             background: rgba(0,0,0,0.3);
-            padding: 15px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 6px;
             border: 1px solid rgba(255,255,255,0.05);
-            line-height: 1.6;
+            line-height: 1.5;
         }
         .legal-notice h4 {
             color: var(--gold-light);
-            font-size: 12px;
-            margin-bottom: 5px;
+            font-size: 11px;
+            margin-bottom: 4px;
         }
     </style>
 </head>
 <body>
 
-    <!-- 頂部導覽列 -->
+    <!-- 頂部導覽列（手機優化版） -->
     <header>
-        <div class="brand-info">
-            <div class="brand-logo">品</div>
-            <div class="brand-text">
-                <h1>品心書閣 & 紫墨禪音</h1>
-                <p>學術文學創作者 · 彭品心老師</p>
+        <div class="header-row">
+            <div class="brand-info">
+                <div class="brand-logo">品</div>
+                <div class="brand-text">
+                    <h1>品心書閣 & 紫墨禪音</h1>
+                    <p>學術文學創作者 · 彭品心老師</p>
+                </div>
             </div>
         </div>
-        <div class="nav-buttons">
-            <button class="btn-gold" onclick="toggleCart()">🛒 購物車 (<span id="cart-count">0</span>)</button>
-            <a href="#consult-form" class="btn-outline">預約表單</a>
+        <div class="header-row" style="border-top: 1px solid rgba(212,175,55,0.15); padding-top: 8px;">
+            <span style="font-size: 11px; color: var(--text-muted);">導覽選單</span>
+            <div class="nav-buttons">
+                <button class="btn-gold" onclick="toggleCart()">🛒 購物車 (<span id="cart-count">0</span>)</button>
+                <a href="#consult-form" class="btn-outline">預約表單</a>
+            </div>
         </div>
     </header>
 
@@ -244,9 +252,9 @@
         <!-- 購物車明細展開區塊 -->
         <div class="card" id="cart-section">
             <h2 class="section-title">🛒 您的購物車清單</h2>
-            <div id="cart-items" style="font-size: 14px; margin-bottom: 15px; color: var(--text-muted);">購物車目前是空的</div>
-            <div style="font-weight: bold; margin-bottom: 15px; color: var(--gold-light);">總計金額：NT$ <span id="cart-total">0</span></div>
-            <button class="btn-gold" style="width: 100%; padding: 10px;" onclick="checkout()">確認送出訂單</button>
+            <div id="cart-items" style="font-size: 13px; margin-bottom: 12px; color: var(--text-muted);">購物車目前是空的</div>
+            <div style="font-weight: bold; margin-bottom: 12px; color: var(--gold-light);">總計金額：NT$ <span id="cart-total">0</span></div>
+            <button class="btn-gold" style="width: 100%; padding: 10px; justify-content: center;" onclick="checkout()">確認送出訂單</button>
         </div>
 
         <!-- 主視覺與品牌理念 -->
@@ -265,15 +273,15 @@
             <h2 class="section-title">📖 學術文學著作專區</h2>
             
             <div class="product-item">
-                <h3 style="color: var(--gold-light); font-size: 16px;">《生命的出口》</h3>
-                <p class="section-desc" style="font-size: 13px; margin: 5px 0;">深入探討靈性轉折與人生困境突破的啟靈之作，引領您在迷惘中看見曙光。</p>
+                <h3 style="color: var(--gold-light); font-size: 15px;">《生命的出口》</h3>
+                <p class="section-desc" style="font-size: 12px; margin: 4px 0;">深入探討靈性轉折與人生困境突破的啟靈之作，引領您在迷惘中看見曙光。</p>
                 <div class="price">NT$ 269</div>
                 <button class="btn-gold" onclick="addToCart('《生命的出口》', 269)">加入購物車</button>
             </div>
 
-            <div class="product-item" style="margin-top: 20px;">
-                <h3 style="color: var(--gold-light); font-size: 16px;">《進階思維的後裔》</h3>
-                <p class="section-desc" style="font-size: 13px; margin: 5px 0;">突破傳統框架、重塑高維思考邏輯的智慧結晶，賦予現代人前瞻性的洞察力。</p>
+            <div class="product-item" style="margin-top: 15px;">
+                <h3 style="color: var(--gold-light); font-size: 15px;">《進階思維的後裔》</h3>
+                <p class="section-desc" style="font-size: 12px; margin: 4px 0;">突破傳統框架、重塑高維思考邏輯的智慧結晶，賦予現代人前瞻性的洞察力。</p>
                 <div class="price">NT$ 269</div>
                 <button class="btn-gold" onclick="addToCart('《進階思維的後裔》', 269)">加入購物車</button>
             </div>
@@ -285,7 +293,7 @@
             <p class="section-desc">
                 由先知命局紫墨老師親自精算，結合先天命理與後天數字磁場，為您的重要人生節點精準把關：
             </p>
-            <ul style="font-size: 14px; padding-left: 20px; color: var(--text-main); margin-bottom: 15px; display: flex; flex-direction: column; gap: 6px;">
+            <ul style="font-size: 13px; padding-left: 18px; color: var(--text-main); margin-bottom: 10px; display: flex; flex-direction: column; gap: 5px;">
                 <li><strong>手機號碼選吉</strong>：磁場能量加持，提升貴人運與財氣。</li>
                 <li><strong>車牌號碼選吉</strong>：行車平安、出行順遂的數字護符。</li>
                 <li><strong>店鋪與辦公室門牌選吉</strong>：生意興隆、聚氣招財的黃金磁場。</li>
@@ -297,18 +305,18 @@
         <!-- VIP 880 會員專屬福利專區 -->
         <div class="card" style="background: linear-gradient(180deg, rgba(212,175,55,0.1) 0%, rgba(28,26,24,1) 100%); text-align: center;">
             <h2 class="section-title" style="text-align: center; border-left: none; padding-left: 0;">✨ VIP 880 會員專屬尊榮禮遇</h2>
-            <p class="section-desc" style="text-align: center;">
-                加入 VIP 880 方案，即可享有全館學術著作、數字選吉服務、原創畫作珍藏之**終身九折優惠**，以及優先預約老師一對一命理諮詢的尊榮資格。
+            <p class="section-desc" style="text-align: center; font-size: 13px;">
+                加入 VIP 880 方案，即可享有全館學術著作、數字選吉服務、原創畫作珍藏之終身九折優惠，以及優先預約老師一對一命理諮詢的尊榮資格。
             </p>
-            <div class="price" style="font-size: 20px; margin: 15px 0;">NT$ 880 / 終身會籍</div>
-            <button class="btn-gold" style="padding: 10px 30px;" onclick="addToCart('VIP 880 終身會員方案', 880)">立即加入 VIP 方案</button>
+            <div class="price" style="font-size: 18px; margin: 12px 0;">NT$ 880 / 終身會籍</div>
+            <button class="btn-gold" style="padding: 9px 25px; justify-content: center;" onclick="addToCart('VIP 880 終身會員方案', 880)">立即加入 VIP 方案</button>
         </div>
 
         <!-- 原創藝術畫作與禪音珍藏專區 -->
         <div class="card">
             <h2 class="section-title">🎨 原創藝術畫作與紫墨禪音珍藏</h2>
             <p class="section-desc">
-                精選彭品心老師親創之中國水墨山水、書法墨寶及茶文化意境花藝，並融合古箏、洞簫、竹笛與頌缽之紫墨禪音。每幅高畫質數位典藏畫作均一價 **NT$ 680**，讓美學與靈性祝福毫無負擔地融入您的生活空間。
+                精選彭品心老師親創之中國水墨山水、書法墨寶及茶文化意境花藝，並融合古箏、洞簫、竹笛與頌缽之紫墨禪音。每幅高畫質數位典藏畫作均一價 **NT$ 680**。
             </p>
             <div class="price">均一結緣價：NT$ 680</div>
             <button class="btn-gold" onclick="addToCart('原創藝術數位典藏畫作', 680)">收藏畫作</button>
@@ -317,7 +325,7 @@
         <!-- 專業諮詢與數字選吉預約表單 -->
         <div class="card" id="consult-form">
             <h2 class="section-title">📝 命理諮詢與數字選吉預約表單</h2>
-            <p class="section-desc" style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">
+            <p class="section-desc" style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
                 請填寫您的基本資料與需求項目，我們將由專人與您聯繫安排老師親算。
             </p>
             <div class="form-group">
@@ -345,9 +353,9 @@
             <button class="form-submit-btn" onclick="submitForm()">送出預約需求</button>
         </div>
 
-        <!-- 管理員上傳新畫作區塊（連接 /api/upload 永久保存） -->
+        <!-- 管理員上傳新畫作區塊 -->
         <div class="card" style="border: 1px dashed var(--gold-primary);">
-            <h3 style="color: var(--gold-light); margin-bottom: 10px; font-size: 15px;">🔐 管理員畫作上傳中心</h3>
+            <h3 style="color: var(--gold-light); margin-bottom: 8px; font-size: 14px;">🔐 管理員畫作上傳中心</h3>
             <div class="form-group">
                 <input type="text" id="artName" class="form-control" placeholder="請輸入畫作名稱..." />
             </div>
@@ -367,7 +375,7 @@
 
     </div>
 
-    <!-- 前端互動與購物車、上傳邏輯 JS -->
+    <!-- 互動邏輯 JS -->
     <script>
         let cart = [];
 
